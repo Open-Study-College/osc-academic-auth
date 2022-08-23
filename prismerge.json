@@ -1,0 +1,6 @@
+{
+  "app": {
+    "inputs": ["./prisma//schema/*.prisma", "./prisma/connection.prisma"],
+    "output": "./prisma/schema.prisma"
+  }
+}
