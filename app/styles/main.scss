@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+/* =============================================================================
+   Primary styles
+   ========================================================================== */
+
+/*
+  Contents
+  --------
+	0 	$ELEMENTS
+	2 	$OBJECTS
+	3 	$COMPONENTS
+	4	$LAYOUT
+	5 	$UTILITIES
+	6 	$STYLEGUIDE
+*/
+
+/* ============================
+// $ELEMENTS
+// Single HTML element selectors without classes
+*/
+@use "elements/normalize";
+@use "elements/address";
+@use "elements/iframe";
+@use "elements/image";
+@use "elements/list";
+@use "elements/page";
+@use "elements/table";
+@use "elements/type";
+
+/* ============================
+// $OBJECTS
+// Classes for page structure typically following the OOCSS methodology
+// The first layer in which we find class-level specificity
+*/
+
+@use "objects/ar";
+@use "objects/container";
+@use "objects/flex";
+@use "objects/img";
+@use "objects/media";
+@use "objects/row";
+@use "objects/grid";
+@use "objects/bg";
+@use "objects/list" as list2;
+@use "objects/main";
+
+/* ============================
+// $TYPOGRAPHY
+// Classes for the display and control of your typography.
+// These elements sit loosely between objects and components and in turn can be overridden on a piece of UI
+*/
+@use "typography/font";
+
+/* ============================
+//	$COMPONENTS
+//  Classes for styling any & all UI elements (often combined with the structure of object classes)
+//  Keep to DRY principles  ( [D]ont [R]epeat [Y]ourself )
+*/
+@use "components/spinner";
+
+/* ============================
+// $UTILITIES
+// utilities classes in accordance with DRY mentality.
+// Eliminates the need to create specific classes to perform simple tasks
+// NOTE: Use sparingly
+*/
+@use "utilities/util";
+@use "utilities/anim";

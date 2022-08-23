@@ -1,0 +1,23 @@
+{
+  "useTabs": false,
+  "bracketSpacing": true,
+  "tabWidth": 4,
+  "printWidth": 100,
+  "overrides": [
+    {
+      "files": "*.json",
+      "options": {
+        "tabWidth": 2
+      }
+    },
+    {
+      "files": ["**/*.css", "**/*.scss", "**/*.html"],
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ],
+  "semi": true,
+  "trailingComma": "none",
+  "singleQuote": true
+}

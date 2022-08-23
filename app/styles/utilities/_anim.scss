@@ -1,0 +1,184 @@
+@use "../settings" as s;
+@use "../tools" as t;
+
+[data-anim] {
+    position: relative;
+
+    .js & {
+        opacity: 0;
+
+        &[data-anim=""] {
+            opacity: 1;
+        }
+    }
+
+    .no-js & {
+        opacity: 1;
+    }
+
+    @media (prefers-reduced-motion) {
+        transition: none;
+        animation: unset;
+    }
+
+    &[data-anim="reveal"] {
+        transform: scaleY(0);
+    }
+
+    &[data-anim$="abs"] {
+        position: absolute;
+    }
+
+    &[data-anim$="sticky"] {
+        position: sticky;
+    }
+
+    &[data-anim*="block"] {
+        overflow: hidden;
+        opacity: 1;
+
+        &::after {
+            content: "";
+
+            // negative pixels to combat sub-pixel rendering
+            @include t.position(absolute, 0, -1px, 0, -1px);
+
+            background-color: currentcolor;
+            transform: translate3d(-100%, 0, 0);
+            will-change: transform;
+        }
+
+        [src] {
+            opacity: 0;
+        }
+    }
+}
+
+.is-inview {
+    &[data-anim*="fade-in"],
+    & [data-anim*="fade-in"] {
+        transition: opacity s.$timing s.$ease-in-out-circ;
+        opacity: 1;
+    }
+
+    &[data-anim*="fade-in-stagger"],
+    & [data-anim*="fade-in-stagger"] {
+        transition: opacity s.$timing-l s.$ease-in-out-circ;
+        opacity: 1;
+
+        @include t.stagger-delay(20, 0.25s, 0.1s, "transition", true);
+    }
+
+    &[data-anim*="fade-in-up"],
+    & [data-anim*="fade-in-up"] {
+        @include t.animate(fade-in-up);
+    }
+
+    &[data-anim="fade-in-up-stagger"],
+    & [data-anim="fade-in-up-stagger"] {
+        > *:not(.o-anim) {
+            @include t.animate(fade-in-up);
+            @include t.stagger-delay(20, 0.25s, 0.1s);
+        }
+    }
+
+    &[data-anim="fade-in-left"],
+    & [data-anim="fade-in-left"] {
+        @include t.animate(fade-in-left, 1.2s, s.$ease-in-out-circ, 0s, forwards);
+    }
+
+    &[data-anim="fade-in-right"],
+    & [data-anim="fade-in-right"] {
+        @include t.animate(fade-in-right, 1.2s, s.$ease-in-out-circ, 0s, forwards);
+    }
+
+    // &[data-anim*="reveal"] {
+    //     &::before {
+    //         content: "";
+    //         @include _position(absolute, 0, 0, 0, 0, 3);
+    //         background-color: inherit;
+    //     }
+
+    //     > * {
+    //         @include animate(fade-in-up);
+    //         @include stagger-delay(10, 0.25s, 0.1s);
+    //         z-index: 5;
+    //     }
+    // }
+
+    &[data-anim*="scale-in"] {
+        @include t.animate(scale);
+
+        transform-origin: center;
+    }
+
+    &[data-anim="scale-in-stagger"],
+    & [data-anim="scale-in-stagger"] {
+        opacity: 1;
+
+        > *:not(.o-anim) {
+            @include t.animate(scale);
+            @include t.stagger-delay(20, 0.25s, 0.1s);
+
+            transform-origin: center;
+        }
+    }
+
+    &[data-anim="reveal"] {
+        @include t.animate(reveal);
+
+        transform-origin: bottom;
+    }
+
+    &[data-anim="reveal-left"] {
+        @include t.animate(reveal-left);
+
+        transform-origin: right center;
+    }
+
+    &[data-anim="reveal-right"] {
+        @include t.animate(reveal-right);
+
+        transform-origin: left center;
+    }
+
+    &[data-anim="block"] {
+        &::after {
+            @include t.animate(slide-in, 1.2s, s.$ease-in-out-quint, 0s, forwards);
+        }
+
+        [src] {
+            @include t.animate(fade-in, 0.1s, ease, 0.6s, forwards);
+        }
+    }
+
+    // Adds Staggering Data Attribute
+    $count: 10;
+    $stagger-delay: 0.4s;
+    $stagger: 0.2s;
+
+    @for $i from 1 through $count {
+        &[data-anim-delay-count="#{$i}"] {
+            animation-delay: $stagger-delay + $stagger * $i;
+        }
+    }
+}
+
+// Character Animations
+.o-anim {
+    position: relative;
+    overflow: hidden;
+
+    &__words {
+        display: inline-block;
+        overflow: hidden;
+        line-height: 1;
+        white-space: nowrap;
+    }
+
+    &__letter {
+        display: inline-block;
+        transform-origin: 0 100%;
+        opacity: 0;
+    }
+}

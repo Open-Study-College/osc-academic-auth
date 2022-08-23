@@ -1,0 +1,50 @@
+name: Destroy staging app
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - staging
+
+env:
+  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+  FLY_REGION: iad
+
+jobs:
+  destroy_staging_app:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: pr-${{ github.event.number }}
+      url: ${{ steps.deploy.outputs.url }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: 👀 Read app name
+        uses: SebRollen/toml-action@v1.0.0
+        id: app_name
+        with:
+          file: "fly.toml"
+          field: "app"
+
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+        if: always()
+        continue-on-error: true
+      - run: flyctl apps destroy pr-${{ github.event.number }}-${{ steps.app_name.outputs.value }} -y
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+      - name: delete db branch
+        id: delete-db-branch
+        if: always()
+        continue-on-error: true
+        timeout-minutes: 3
+        env:
+          PLANETSCALE_SERVICE_TOKEN_ID: ${{secrets.PLANETSCALE_SERVICE_TOKEN_ID}}
+          PLANETSCALE_SERVICE_TOKEN: ${{secrets.PLANETSCALE_SERVICE_TOKEN}}
+          ORG_NAME: ${{secrets.ORG_NAME}}
+          DB_NAME: ${{secrets.DB_NAME}}
+          GITHUB_USER: ${{github.actor}}
+          BRANCH_NAME: pr-${{ github.event.number }}
+        run: |
+          ./.pscale/cli-helper-scripts/delete-db-branch.sh "$BRANCH_NAME"

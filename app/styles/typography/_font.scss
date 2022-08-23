@@ -1,0 +1,196 @@
+@use "sass:list";
+@use "sass:map";
+@use "../settings" as s;
+@use "../tools" as t;
+
+/* ============================
+// $FONT STYLES
+// Define our Font Elements/Classes.
+// We are able to utilise semantic H1-H6 but also override the presentation using the class convention
+*/
+
+/* ============================
+//  Usage:
+//
+// @param {*} elements - expects an element tag. recommended h1 - h6
+// @param {*} classes - expects desired class name
+// @param {*} font-size - expects a base font-size with option to add different sizes at different media queries
+
+// Usage:
+// <h1 class="t-font-beta"></h1>
+*/
+
+$font-sizes: (
+    (
+        elements: (
+            h1
+        ),
+        classes: (
+            "alpha"
+        ),
+        font-size: (
+            base: s.$size-beta,
+            s.$mq-tab--sml: s.$size-alpha
+        )
+    ),
+    (
+        elements: (
+            h2
+        ),
+        classes: (
+            "beta"
+        ),
+        font-size: (
+            base: s.$size-gamma,
+            s.$mq-tab--sml: s.$size-beta
+        )
+    ),
+    (
+        elements: (
+            h3
+        ),
+        classes: (
+            "gamma"
+        ),
+        font-size: (
+            base: s.$size-delta,
+            s.$mq-tab--sml: s.$size-gamma
+        )
+    ),
+    (
+        elements: (
+            h4
+        ),
+        classes: (
+            "delta"
+        ),
+        font-size: (
+            base: s.$size-delta
+        )
+    ),
+    (
+        elements: (
+            h5
+        ),
+        classes: (
+            "epsilon"
+        ),
+        font-size: (
+            base: s.$size-epsilon
+        )
+    ),
+    (
+        elements: (
+            h6
+        ),
+        classes: (
+            "zeta"
+        ),
+        font-size: (
+            base: s.$size-zeta
+        )
+    ),
+    (
+        elements: (),
+        classes: (
+            "centi"
+        ),
+        font-size: (
+            base: s.$size-centi
+        )
+    ),
+    (
+        elements: (),
+        classes: (
+            "milli"
+        ),
+        font-size: (
+            base: s.$size-milli
+        )
+    ),
+    (
+        elements: (),
+        classes: (
+            "kilo"
+        ),
+        font-size: (
+            base: s.$size-kilo,
+            s.$mq-desk: s.$size-mega
+        ),
+        line-height: (
+            1
+        )
+    )
+);
+$font-families: (
+    "primary": s.$font-primary,
+    "secondary": s.$font-secondary
+);
+
+@mixin font-styles($rules, $mq: null, $fs: null) {
+    $size: map.get($rules, font-size);
+    $font-size: map.get($size, base);
+
+    @if $mq != "base" {
+        @include t.mq($mq, min) {
+            @include t.font-size($fs);
+        }
+    } @else {
+        @if map.has-key($rules, line-height) {
+            @include t.font-size($font-size, map.get($rules, line-height));
+        } @else {
+            @include t.font-size($font-size);
+        }
+    }
+}
+
+/* postcss-bem-linter: ignore */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+[class*="t-font"] {
+    margin: 0 0 s.$global-spacing-s;
+    font-style: normal;
+    font-weight: s.$weight-bold;
+    text-transform: none;
+}
+
+// Font Family
+.t-font {
+    @each $name, $font-family in $font-families {
+        &-#{$name} {
+            font-family: #{$font-family};
+
+            @if $name == "secondary" {
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+// Font Sizes
+@each $rule in $font-sizes {
+    $elements: map.get($rule, elements);
+    $classes: map.get($rule, classes);
+    $sizes: map.get($rule, font-size);
+
+    @each $size in $sizes {
+        $mq: list.nth($size, 1);
+        $fs: list.nth($size, 2);
+
+        @each $element in $elements {
+            #{$element} {
+                @include font-styles($rule, $mq, $fs);
+            }
+        }
+
+        @each $class in $classes {
+            .t-font-#{$class} {
+                @include font-styles($rule, $mq, $fs);
+            }
+        }
+    }
+}

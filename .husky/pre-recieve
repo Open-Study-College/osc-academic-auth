@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# full paths from the repo root separated by newlines
+MUST_NOT_CHANGE='prisma/schema.prisma
+'
+
+z40=0000000000000000000000000000000000000000
+
+BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+
+if [[ "$BRANCH" != "db"* ]]; then
+if [[ "$BRANCH" != "Db"* ]]; then
+while read old_value new_value ref_name
+do
+  if [ "$old_value" = $z40 ]; then
+    # New branch: diff against an empty tree object
+    against=4b825dc642cb6eb9a060e54bf8d69288fbee4904
+  else
+    against=$old_value
+  fi
+
+  if git diff --name-only $against..$new_value |
+     grep --quiet --line-regexp --fixed-strings "$MUST_NOT_CHANGE"
+  then
+    echo "$ref_name" may commit key, rejected ... >&2
+    exit 1
+  fi
+done
+fi
+fi

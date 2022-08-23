@@ -1,0 +1,86 @@
+@use "../settings" as s;
+@use "../tools" as t;
+
+/* ============================
+// $GENERIC LIST OBJECT
+*/
+
+// stylelint-disable
+.o-list,
+[class*="c-content"] ul,
+[class*="free-text"] ul {
+    &:not(.is-bare) {
+        width: 100%;
+        margin: 0 0 (s.$global-spacing-s * 2);
+        padding: 0;
+    }
+
+    li {
+        position: relative;
+        display: list-item;
+        margin-bottom: s.$global-spacing-s;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    ul {
+        padding-left: s.$global-spacing;
+
+        &.is-child {
+            margin: 0;
+        }
+
+        ul {
+            margin-top: s.$global-spacing-s;
+        }
+    }
+
+    &,
+    &--bullet {
+        $bullet: 7px;
+
+        &:not(.is-bare) {
+            list-style: none outside none;
+
+            li {
+                padding-left: s.$global-spacing-s * 2;
+
+                &.has-children {
+                    padding-left: 0;
+                    display: contents;
+                }
+
+                &:not(.has-children) {
+                    &::before {
+                        content: "";
+                        @include t.position(absolute, $bullet, null, null, 0);
+                        width: $bullet;
+                        height: $bullet;
+                        margin: auto 0;
+                        background-color: s.$colour-quaternary;
+                        border-radius: 50%;
+                    }
+                }
+            }
+        }
+    }
+
+    &--square {
+        list-style: square outside;
+    }
+    &--circle {
+        list-style: circle outside;
+    }
+    &--disc {
+        list-style: disc outside;
+    }
+    &--counter {
+        list-style: decimal outside;
+    }
+    &--reset {
+        list-style: none outside none;
+    }
+}
+// stylelint-enable

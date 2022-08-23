@@ -1,0 +1,15 @@
+@mixin hover() {
+    @media (hover: none) {
+        &.is-active,
+        &:active {
+            @content;
+        }
+    }
+
+    @media (hover: hover), all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        &.is-active,
+        &:hover {
+            @content;
+        }
+    }
+}

@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation Request
+    url: https://github.com/Open-Study-College/osc-request-form/issues/new/choose
+    about: Request for documentation to be added/altered

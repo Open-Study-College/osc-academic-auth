@@ -1,0 +1,23 @@
+@use "sass:math";
+
+///*----------------------------------*\
+//  #FONT-SIZE
+//\*----------------------------------*/
+//
+//  PX to REM for font-sizes and line-height
+//  Line height is relative to the cascade - ideally inherited from the <body> but can be overridden.
+//
+//\*----------------------------------*/
+
+// Usage:
+//
+// @include font-size($size-alpha);
+// @include font-size($size-alpha, $line-height); // overrides line-height
+
+@mixin font-size($font-size, $line-height: null) {
+    font-size: math.div($font-size, 10) + rem;
+
+    @if $line-height != null {
+        line-height: $line-height;
+    }
+}

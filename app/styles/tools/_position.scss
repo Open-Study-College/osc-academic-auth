@@ -1,0 +1,35 @@
+///*----------------------------------*\
+//  #POSITION
+//\*----------------------------------*/
+//
+//  Streamlines a common set of CSS properties which can cause bloat
+//
+//\*----------------------------------*/
+
+// Usage:
+//
+//  @include _position(absolute, 10px, 0px, 5px, 10px, 2);
+//	returns    	position:absolute;
+//				top: 10px;
+// 				right: 0px;
+// 				bottom: auto;
+// 				left: auto;
+// 				z-index: 5
+//
+//  to emit a value, simply pass null. e.g. @include _position(absolute, 10px, null, null, 10px, 2);
+
+@mixin position(
+    $property: absolute,
+    $top: auto,
+    $right: auto,
+    $bottom: auto,
+    $left: auto,
+    $zindex: null
+) {
+    position: $property;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+    z-index: $zindex;
+}

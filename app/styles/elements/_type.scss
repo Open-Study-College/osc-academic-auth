@@ -1,0 +1,49 @@
+@use "../settings" as s;
+@use "../tools" as t;
+
+///*----------------------------------*\
+//  #TYPE
+//\*----------------------------------*/
+//
+// Basic Typography styles
+//
+//\*----------------------------------*/
+
+p {
+    margin: 0 0 s.$global-spacing-s * 2;
+}
+
+a {
+    color: inherit;
+    text-decoration: underline;
+
+    &,
+    &:active,
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+small {
+    @include t.font-size(s.$size-micro);
+}
+
+a[href],
+button,
+input,
+select,
+textarea {
+    &:focus {
+        box-shadow: 0 0 0 0.5rem s.$colour-tertiary, 0 0 0 0.75rem s.$colour-primary; /* outline color here */
+
+        &:not(:focus-visible) {
+            box-shadow: none;
+        }
+    }
+}
+
+input,
+select,
+textarea {
+    @include t.font-size(s.$base-font-size);
+}
