@@ -1,0 +1,57 @@
+@use "../tools" as t;
+
+/* ============================
+// $IMAGE OBJECT
+// Allow the control of image display using Lazyloading and Object-fit
+*/
+
+/* ============================
+//  Usage:
+//
+//  <div class="o-img"> ... </div>
+*/
+
+.o-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.3s ease-in;
+    opacity: 0;
+
+    &:not([src]):not([srcset]) {
+        opacity: 0;
+    }
+
+    &.is-loaded,
+    &.lazyloaded,
+    &.flickity-lazyloaded {
+        opacity: 1;
+    }
+
+    &.is-hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    &--cover {
+        @include t.object-fit(cover, center);
+
+        &-right {
+            @include t.object-fit(cover, right);
+        }
+
+        &-left {
+            @include t.object-fit(cover, left);
+        }
+    }
+
+    &--contain {
+        @include t.object-fit(contain, center);
+    }
+
+    &--auto {
+        width: auto;
+        height: auto;
+    }
+}

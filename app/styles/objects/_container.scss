@@ -1,0 +1,75 @@
+@use "../settings" as s;
+@use "../tools" as t;
+
+.o-container {
+    $padding: calc(s.$global-spacing / 2);
+    $padding-alt: s.$global-spacing-m;
+
+    width: 100%;
+    max-width: #{s.$global-base-width}px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: $padding;
+    padding-left: $padding;
+
+    &--flush {
+        padding-right: 0;
+        padding-left: 0;
+
+        &-alt-r {
+            @include t.mq(s.$mq-global, max) {
+                padding-right: 0;
+            }
+        }
+
+        &-alt-l {
+            @include t.mq(s.$mq-global, max) {
+                padding-left: 0;
+            }
+        }
+    }
+
+    &--pad-r {
+        padding-right: 0;
+
+        @include t.mq(s.$mq-global) {
+            padding-right: s.$global-spacing * 2;
+        }
+    }
+
+    &--pad-l {
+        padding-left: 0;
+
+        @include t.mq(s.$mq-global) {
+            padding-left: s.$global-spacing * 2;
+        }
+    }
+
+    &--xsmall {
+        max-width: calc(#{s.$container-size-xxxsml * 1px} + #{$padding-alt});
+    }
+
+    &--small {
+        max-width: calc(#{s.$container-size-xxsml * 1px} + #{$padding});
+    }
+
+    &--medium {
+        max-width: calc(#{s.$container-size-sml * 1px} + #{$padding});
+    }
+
+    &--large {
+        max-width: calc(#{s.$container-size * 1px} + #{$padding});
+    }
+
+    &--xlarge {
+        max-width: calc(#{s.$container-size-lrg * 1px} + #{$padding});
+    }
+
+    &--full {
+        max-width: 100%;
+    }
+
+    &-fluid {
+        padding: $padding;
+    }
+}

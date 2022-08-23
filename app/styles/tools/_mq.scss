@@ -1,0 +1,39 @@
+@use "sass:list";
+@use "sass:meta";
+
+///*----------------------------------*\
+//  #MEDIA QUERY
+//\*----------------------------------*/
+//
+//  PX to REM for font-sizes and line-height
+//  Line height is relative to the cascade - ideally inherited from the <body> but can be overridden.
+//
+//\*----------------------------------*/
+
+// Usage:
+//
+// @include mq($mq-mob) { ... }; // min-width
+// @include mq($mq-mob, max) { ... }; // max-width
+// @include mq(($mq-mob, $mq-tab)) { ... }; // min-max
+// @include mq($mq-mob, max, height) { ... }; // max-height
+// @include mq($mq-mob, min, height) { ... }; // min-height
+// @include mq(($mq-mob, $mq-tab), null, height) { ... }; // min-max height
+
+@mixin mq($viewports, $constraint1: min, $constraint2: width) {
+    $min: min-#{$constraint2};
+    $max: max-#{$constraint2};
+
+    @if $constraint1 == max {
+        $viewports: $viewports - 1;
+    }
+
+    @if meta.type-of($viewports) == number {
+        @media screen and (#{$constraint1}-#{$constraint2}: $viewports) {
+            @content;
+        }
+    } @else {
+        @media screen and ($min: list.nth($viewports, 1)) and ($max: list.nth($viewports, 2)) {
+            @content;
+        }
+    }
+}

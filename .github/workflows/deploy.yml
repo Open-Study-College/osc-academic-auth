@@ -1,0 +1,379 @@
+name: 🚀 Deploy
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, edited, closed]
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  lint:
+    permissions: write-all
+    name: ⬣ ESLint
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛑 Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v3
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: 📥 Download deps
+        uses: bahmutov/npm-install@v1
+        with:
+          useLockFile: false
+
+      - name: 🔬 Lint
+        run: npm run lint
+
+  typecheck:
+    name: ʦ TypeScript
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛑 Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v3
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: 📥 Download deps
+        uses: bahmutov/npm-install@v1
+        with:
+          useLockFile: false
+
+      - name: 🔎 Type check
+        run: npm run typecheck --if-present
+
+  vitest:
+    name: ⚡ Vitest
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛑 Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v3
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: 📥 Download deps
+        uses: bahmutov/npm-install@v1
+        with:
+          useLockFile: false
+
+      - name: ⚡ Run vitest
+        run: npm run test -- --coverage
+
+  cypress:
+    name: ⚫️ Cypress
+    env:
+      PLANETSCALE_PRISMA_DATABASE_URL: ${{ secrets.PLANETSCALE_PRISMA_DATABASE_URL_CYPRESS }}
+      SESSION_SECRET: super-duper-secret
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛑 Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v3
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: 📥 Download deps
+        uses: bahmutov/npm-install@v1
+        with:
+          useLockFile: false
+
+      - name: ⚙️ Build
+        run: npm run build
+
+      - name: 🌳 Cypress run
+        uses: cypress-io/github-action@v3
+        with:
+          start: npm run start:mocks
+          wait-on: "http://localhost:8811"
+        env:
+          PORT: "8811"
+
+  build-and-deploy:
+    # needs: [lint, typecheck, vitest, cypress]
+    permissions: write-all
+    name: 🐳 Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: format head_ref
+        uses: bluwy/substitute-string-action@v1
+        id: findandreplace
+        with:
+          _input-text: ${{ github.head_ref }}
+          /: "-"
+
+      - name: Get PR details
+        run: |
+          echo "HEAD_REF=${{ steps.findandreplace.outputs.result }}" >> $GITHUB_ENV
+          echo "BASE_REF=${{ github.base_ref  }}" >> $GITHUB_ENV
+          echo "PR_CLOSED=${{ github.event.pull_request.merged == true }}" >> $GITHUB_ENV
+
+      - name: 🛑 Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v3
+
+      - name: 👀 Read app name
+        uses: SebRollen/toml-action@v1.0.0
+        id: app_name
+        with:
+          file: "fly.toml"
+          field: "app"
+
+      - name: 🐳 Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      # Setup cache
+      - name: ⚡️ Cache Docker layers
+        uses: actions/cache@v2
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+
+      - name: 🔑 Fly Registry Auth
+        uses: docker/login-action@v1
+        with:
+          registry: registry.fly.io
+          username: x
+          password: ${{ secrets.FLY_API_TOKEN }}
+
+      - name: create connection string to BASE_REF
+        id: create-cs
+        if: ${{ (env.BASE_REF == 'production' || env.BASE_REF == 'release' || env.BASE_REF == 'staging') && env.PR_CLOSED == 'true' }}
+        timeout-minutes: 3
+        env:
+          PLANETSCALE_SERVICE_TOKEN_ID: ${{secrets.PLANETSCALE_SERVICE_TOKEN_ID}}
+          PLANETSCALE_SERVICE_TOKEN: ${{secrets.PLANETSCALE_SERVICE_TOKEN}}
+          ORG_NAME: ${{secrets.ORG_NAME}}
+          DB_NAME: ${{secrets.DB_NAME}}
+          GITHUB_USER: ${{github.actor}}
+          BRANCH_NAME: ${{ env.BASE_REF }}
+          PASSWORD_NAME: ${{ env.BASE_REF }}-${{ steps.app_name.outputs.value }}
+        run: |
+          ./.pscale/cli-helper-scripts/create-branch-connection-string-pr-branches.sh
+
+      - name: create connection string to MAIN
+        id: create-cs-main
+        if: ${{ env.BASE_REF == 'production' && env.PR_CLOSED == 'true' }}
+        timeout-minutes: 3
+        env:
+          PLANETSCALE_SERVICE_TOKEN_ID: ${{secrets.PLANETSCALE_SERVICE_TOKEN_ID}}
+          PLANETSCALE_SERVICE_TOKEN: ${{secrets.PLANETSCALE_SERVICE_TOKEN}}
+          ORG_NAME: ${{secrets.ORG_NAME}}
+          DB_NAME: ${{secrets.DB_NAME}}
+          GITHUB_USER: ${{github.actor}}
+          BRANCH_NAME: main
+          PASSWORD_NAME: main-${{ steps.app_name.outputs.value }}
+        run: |
+          ./.pscale/cli-helper-scripts/create-branch-connection-string.sh
+
+      # added here
+      - name: create connection string to MAIN-SHADOW
+        id: create-cs-main-shadow
+        if: ${{ env.BASE_REF == 'release' && env.PR_CLOSED == 'true' }}
+        timeout-minutes: 3
+        env:
+          PLANETSCALE_SERVICE_TOKEN_ID: ${{secrets.PLANETSCALE_SERVICE_TOKEN_ID}}
+          PLANETSCALE_SERVICE_TOKEN: ${{secrets.PLANETSCALE_SERVICE_TOKEN}}
+          ORG_NAME: ${{secrets.ORG_NAME}}
+          DB_NAME: ${{secrets.DB_NAME}}
+          GITHUB_USER: ${{github.actor}}
+          BRANCH_NAME: main-shadow
+          PASSWORD_NAME: main-shadow-${{ steps.app_name.outputs.value }}
+        run: |
+          ./.pscale/cli-helper-scripts/create-branch-connection-string-shadow.sh
+
+      - name: 🐳 Docker build production
+        id: docker-build-prod
+        if: ${{ env.BASE_REF == 'production' && env.PR_CLOSED == 'true' }}
+        uses: docker/build-push-action@v2
+        with:
+          file: ./Dockerfiles/Dockerfile
+          context: .
+          push: true
+          tags: registry.fly.io/${{ steps.app_name.outputs.value }}:${{ env.HEAD_REF }}-${{ github.sha }}
+          build-args: |
+            "VAPID_PUBLIC_KEY=${{ secrets.VAPID_PUBLIC_KEY }}"
+            "VAPID_PRIVATE_KEY=${{ secrets.VAPID_PRIVATE_KEY }}"
+            "COMMIT_SHA=${{ github.sha }}"
+            "PLANETSCALE_PRISMA_DATABASE_URL_PRODUCTION=${{ env.MY_DB_URL }}${{ secrets.DB_NAME }}?sslaccept=strict&sslcert=./cacert.pem"
+            "PLANETSCALE_PRISMA_DATABASE_URL_MAIN=${{ env.MY_DB_URL_MAIN }}${{ secrets.DB_NAME }}?sslaccept=strict&sslcert=./cacert.pem"
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,mode=max,dest=/tmp/.buildx-cache-new
+
+      - name: 🐳 Docker build release
+        id: "docker-build-release"
+        if: ${{ env.BASE_REF == 'release' && env.PR_CLOSED == 'true' }}
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: registry.fly.io/${{ steps.app_name.outputs.value }}:${{ env.HEAD_REF }}-${{ github.sha }}
+          build-args: |
+            "VAPID_PUBLIC_KEY=${{ secrets.VAPID_PUBLIC_KEY }}"
+            "VAPID_PRIVATE_KEY=${{ secrets.VAPID_PRIVATE_KEY }}"
+            "COMMIT_SHA=${{ github.sha }}"
+            "PLANETSCALE_PRISMA_DATABASE_URL_RELEASE=${{ env.MY_DB_URL }}${{ secrets.DB_NAME }}?sslaccept=strict&sslcert=./cacert.pem"
+            "PLANETSCALE_PRISMA_DATABASE_URL_MAIN_SHADOW=${{ env.MY_DB_URL_MAIN_SHADOW }}${{ secrets.DB_NAME }}?sslaccept=strict&sslcert=./cacert.pem"
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,mode=max,dest=/tmp/.buildx-cache-new
+          file: ./Dockerfiles/Dockerfile.release
+
+      - name: 🐳 Docker build staging
+        id: docker-build-staging
+        if: ${{ env.BASE_REF == 'staging' && env.PR_CLOSED == 'true' }}
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          tags: registry.fly.io/${{ steps.app_name.outputs.value }}:${{ env.HEAD_REF }}-${{ github.sha }}
+          build-args: |
+            "VAPID_PUBLIC_KEY=${{ secrets.VAPID_PUBLIC_KEY }}"
+            "VAPID_PRIVATE_KEY=${{ secrets.VAPID_PRIVATE_KEY }}"
+            "COMMIT_SHA=${{ github.sha }}"
+            "PLANETSCALE_PRISMA_DATABASE_URL_STAGING=${{ env.MY_DB_URL }}${{ secrets.DB_NAME }}?sslaccept=strict&sslcert=./cacert.pem"
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,mode=max,dest=/tmp/.buildx-cache-new
+          file: ./Dockerfiles/Dockerfile.staging
+
+      # This ugly bit is necessary if you don't want your cache to grow forever
+      # till it hits GitHub's limit of 5GB.
+      # Temp fix
+      # https://github.com/docker/build-push-action/issues/252
+      # https://github.com/moby/buildkit/issues/1896
+      - name: 🚚 Move cache
+        if: steps.docker-build-prod.conclusion != 'skipped' && steps.docker-build-release.conclusion != 'skipped' && steps.docker-build-staging.conclusion != 'skipped'
+        run: |
+          rm -rf /tmp/.buildx-cache
+          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+
+      # target staging
+      - name: 🚀 Deploy Staging
+        id: deploy-staging
+        if: ${{ env.BASE_REF == 'staging' && env.PR_CLOSED == 'true' }}
+        uses: superfly/flyctl-actions@1.3
+        with:
+          args: "deploy --app ${{ steps.app_name.outputs.value }}-staging --image registry.fly.io/${{ steps.app_name.outputs.value }}:${{ env.HEAD_REF }}-${{ github.sha }}"
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+      # target release, base staging
+      - name: 🚀 Deploy Release
+        id: deploy-release
+        if: ${{ env.BASE_REF == 'release' && env.PR_CLOSED == 'true' }}
+        uses: superfly/flyctl-actions@1.3
+        with:
+          args: "deploy --app ${{ steps.app_name.outputs.value }}-release --image registry.fly.io/${{ steps.app_name.outputs.value }}:${{ env.HEAD_REF }}-${{ github.sha }}"
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+      # target prod, base release
+      - name: 🚀 Deploy Production
+        id: deploy-production
+        if: ${{ env.BASE_REF == 'production' && env.PR_CLOSED == 'true' }}
+        uses: superfly/flyctl-actions@1.3
+        with:
+          args: "deploy --image registry.fly.io/${{ steps.app_name.outputs.value }}:${{ env.HEAD_REF }}-${{ github.sha }}"
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+      - name: Create and merge deployment request to main
+        if: ${{ env.BASE_REF == 'production' && env.PR_CLOSED == 'true' }}
+        id: create-dr
+        timeout-minutes: 3
+        env:
+          PLANETSCALE_SERVICE_TOKEN_ID: ${{secrets.PLANETSCALE_SERVICE_TOKEN_ID}}
+          PLANETSCALE_SERVICE_TOKEN: ${{secrets.PLANETSCALE_SERVICE_TOKEN}}
+          ORG_NAME: ${{secrets.ORG_NAME}}
+          DB_NAME: ${{secrets.DB_NAME}}
+          GITHUB_USER: ${{github.actor}}
+          BRANCH_NAME: ${{ env.BASE_REF }}
+        run: |
+          ./.pscale/cli-helper-scripts/create-dr-to-main.sh "$BRANCH_NAME"
+
+      # added here
+      - name: Create and merge deployment request to main-shadow
+        if: ${{ env.BASE_REF == 'release' && env.PR_CLOSED == 'true' }}
+        id: create-dr-main-shadow
+        timeout-minutes: 3
+        env:
+          PLANETSCALE_SERVICE_TOKEN_ID: ${{secrets.PLANETSCALE_SERVICE_TOKEN_ID}}
+          PLANETSCALE_SERVICE_TOKEN: ${{secrets.PLANETSCALE_SERVICE_TOKEN}}
+          ORG_NAME: ${{secrets.ORG_NAME}}
+          DB_NAME: ${{secrets.DB_NAME}}
+          GITHUB_USER: ${{github.actor}}
+          BRANCH_NAME: ${{ env.BASE_REF }}
+        run: |
+          ./.pscale/cli-helper-scripts/create-dr-to-main.sh "$BRANCH_NAME"
+
+      - name: delete old connection string to BASE_REF
+        id: delete-cs
+        if: steps.deploy-production.conclusion != 'skipped' || steps.deploy-release.conclusion != 'skipped' || steps.deploy-staging.conclusion != 'skipped'
+        timeout-minutes: 3
+        env:
+          PLANETSCALE_SERVICE_TOKEN_ID: ${{secrets.PLANETSCALE_SERVICE_TOKEN_ID}}
+          PLANETSCALE_SERVICE_TOKEN: ${{secrets.PLANETSCALE_SERVICE_TOKEN}}
+          ORG_NAME: ${{secrets.ORG_NAME}}
+          DB_NAME: ${{secrets.DB_NAME}}
+          GITHUB_USER: ${{github.actor}}
+          BRANCH_NAME: ${{ env.BASE_REF }}
+          PASSWORD_NAME: ${{ env.BASE_REF }}-${{ steps.app_name.outputs.value }}
+
+        run: |
+          ./.pscale/cli-helper-scripts/delete-old-password.sh
+
+      - name: delete old connection string to MAIN
+        id: delete-cs-main
+        if: steps.create-dr.conclusion != 'skipped'
+        timeout-minutes: 3
+        env:
+          PLANETSCALE_SERVICE_TOKEN_ID: ${{secrets.PLANETSCALE_SERVICE_TOKEN_ID}}
+          PLANETSCALE_SERVICE_TOKEN: ${{secrets.PLANETSCALE_SERVICE_TOKEN}}
+          ORG_NAME: ${{secrets.ORG_NAME}}
+          DB_NAME: ${{secrets.DB_NAME}}
+          GITHUB_USER: ${{github.actor}}
+          BRANCH_NAME: main
+          PASSWORD_NAME: main-${{ steps.app_name.outputs.value }}
+        run: |
+          ./.pscale/cli-helper-scripts/delete-old-password.sh
+
+      # added here
+      - name: delete old connection string to MAIN-SHADOW
+        id: delete-cs-main-shadow
+        if: steps.create-dr-main-shadow.conclusion != 'skipped'
+        timeout-minutes: 3
+        env:
+          PLANETSCALE_SERVICE_TOKEN_ID: ${{secrets.PLANETSCALE_SERVICE_TOKEN_ID}}
+          PLANETSCALE_SERVICE_TOKEN: ${{secrets.PLANETSCALE_SERVICE_TOKEN}}
+          ORG_NAME: ${{secrets.ORG_NAME}}
+          DB_NAME: ${{secrets.DB_NAME}}
+          GITHUB_USER: ${{github.actor}}
+          BRANCH_NAME: main-shadow
+          PASSWORD_NAME: main-shadow-${{ steps.app_name.outputs.value }}
+        run: |
+          ./.pscale/cli-helper-scripts/delete-old-password.sh

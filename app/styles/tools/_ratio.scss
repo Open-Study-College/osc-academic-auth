@@ -1,0 +1,42 @@
+@use "sass:list";
+@use "sass:math";
+
+///*----------------------------------*\
+//  #ASPECT RATIO
+//\*----------------------------------*/
+//
+//  mixin for a responsive box that maintains an aspect ratio.
+//  https://gist.github.com/brianmcallister/2932463
+//
+//\*----------------------------------*/
+
+// Usage:
+//
+//  See objects/flex-media fo example usage
+//
+// 		.element {
+// 			&::before {
+//				@include ratio(16 9);
+//              -- or --
+//              @include ratio(16 9, 20px);
+// 			}
+// 		}
+
+@mixin ratio($ratio: 1 1, $deductor: null) {
+    //  $ratio - Ratio the element needs to maintain e.g. 16:9 = (16 9).act
+
+    @if list.length($ratio) < 2 or list.length($ratio) > 2 {
+        @warn "$ratio must be a list with two values.";
+    }
+
+    $ar: #{list.nth($ratio, 1) "/" list.nth($ratio, 2)};
+    $ar-legacy: math.div(list.nth($ratio, 2), list.nth($ratio, 1)) * 100%;
+
+    aspect-ratio: #{$ar};
+
+    @supports not (aspect-ratio: math.div(list.nth($ratio, 1), list.nth($ratio, 2))) {
+        &::before {
+            padding-bottom: #{$ar-legacy};
+        }
+    }
+}

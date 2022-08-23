@@ -1,0 +1,37 @@
+///*----------------------------------*\
+//  #MEDIA QUERY SETTINGS
+//\*----------------------------------*/
+//
+//  Sets baseline Media Queries which correlate with some of the popular viewports.
+//  Adjust where necessary and add/remove if needed.
+//  Apply mixin from tools/mq
+//
+//\*----------------------------------*/
+//
+// Usage:
+// @include mq($mq-mob, min) { ... };
+
+$mq-mob: 480px;
+$mq-mob--xsml: 320px;
+$mq-mob--sml: 375px;
+$mq-mob--med: 550px;
+$mq-mob--lrg: 640px;
+$mq-tab: 768px;
+$mq-tab--sml: 765px;
+$mq-tab--lrg: 820px;
+$mq-desk: 960px;
+$mq-desk--med: 1024px;
+$mq-desk--lrg: 1150px;
+$mq-desk--xlrg: 1280px;
+$mq-desk--xxlrg: 1366px;
+$mq-desk--xxxlrg: 2010px;
+$mq-global: $mq-tab;
+
+// LEGACY
+$desktop: 991px;
+$largedesktop: 1300px;
+$desktop1200: 1200px;
+$tablet: 768px;
+$mobile: 470px;
+$mobile-small: 420px;
+$mobile-smaller: 375px;

@@ -1,0 +1,58 @@
+@use "sass:math";
+@use "sass:meta";
+@use "global";
+
+///*----------------------------------*\
+//  #TYPOGRAPHY SETTINGS
+//\*----------------------------------*/
+//
+//  Set the Typography scales for your site inc. Font Sizes/Weights/Styles
+//  Uses Modular Scale as defined in settings/global
+//  The defined Modular Scale calculates your font sizes based on your $base-font-size and $global-scale-ratio
+//  e.g.
+//  $global-scale-ratio: 1.33;
+//  $size-alpha: round(50 * 1.33) = 66.5 | 65px | 6.5rem
+//
+//  The Sizes are calculated on the previous size defined in the hierarchy
+//  e.g. $size-beta will be passed in to determine the outcome of $size-alpha
+//  These values can of course be overridden;
+//  e.g.
+//  $size-alpha: _fs($size-beta) ...... could also be: $size-alpha: 50;
+//
+//  Ref: https://medium.com/codyhouse/create-your-design-system-part-1-typography-7c630d9092bd
+//
+//\*----------------------------------*/
+
+$font-primary: "Roboto", helvetica, arial, sans-serif;
+$font-secondary: "Roboto Condensed", helvetica, arial, sans-serif;
+$weight-reg: 400;
+$weight-bold: 700;
+
+// Base Sizes
+$base-font-size: 16;
+$base-line-height: global.$global-scale-ratio;
+
+// In Ascending Order to adhere to SASS scope / cascade
+$size-micro: 10;
+$size-milli: 12;
+$size-centi: 14;
+$size-zeta: $base-font-size; // 16px / 1.6rem
+$size-epsilon: global.fs($size-zeta); // 21px / 2.1rem
+$size-delta: global.fs($size-epsilon); // 28px / 2.8rem
+$size-gamma: global.fs($size-delta); // 37px / 3.7rem
+$size-beta: global.fs($size-gamma); // 49px / 4.9rem
+$size-alpha: global.fs($size-beta); // 65px / 6.5rem
+
+$size-kilo: global.fs($size-epsilon * 3.4); // 139px / 13.9rem
+$size-mega: global.fs($size-epsilon * 5); // 139px / 13.9rem
+
+// Do some checks to ensure correct values are being passed
+@each $_font-globals in $base-font-size $base-line-height {
+    @if meta.type-of($_font-globals) == number {
+        @if math.is-unitless($_font-globals) == false {
+            @error "`#{$_spacing-unit}` needs to be unitless.";
+        }
+    } @else {
+        @error "`#{$_font-globals}` needs to be a number.";
+    }
+}

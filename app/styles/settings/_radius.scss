@@ -1,0 +1,15 @@
+@use "spacing";
+
+///*----------------------------------*\
+//  #RADIUS SETTINGS
+//\*----------------------------------*/
+//
+//  Defines radius of elements
+//
+//\*----------------------------------*/
+
+$radius: 50%;
+$radius-l: 100%;
+$radius-m: spacing.$global-spacing;
+$radius-s: spacing.$global-spacing-s;
+$radius-xs: calc(spacing.$global-spacing-s / 2);

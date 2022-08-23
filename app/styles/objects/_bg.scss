@@ -1,0 +1,21 @@
+@use "../tools" as t;
+
+.o-bg {
+    $self: &;
+
+    position: relative;
+
+    @include t.z-index(bg);
+
+    &::before {
+        display: flex;
+        width: 100%;
+        content: "";
+
+        @include t.position(absolute, 0, 0, null, 0, -1);
+
+        background-repeat: repeat-x;
+        opacity: 1;
+        pointer-events: none;
+    }
+}
