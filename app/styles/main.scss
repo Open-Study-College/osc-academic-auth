@@ -1,0 +1,100 @@
+@charset "UTF-8";
+
+/* =============================================================================
+   Primary styles
+   ========================================================================== */
+
+/*
+  Contents
+  --------
+	0 	$SETTINGS
+	1 	$TOOLS
+	2 	$Reset
+	3 	$ELEMENTS
+	4 	$OBJECTS
+	5 	$COMPONENTS
+	6	$LAYOUT
+	7 	$UTILITIES
+	8 	$STYLEGUIDE
+*/
+
+/* ============================
+// $SETTINGS
+// Preprocessor variables and methods
+*/
+@use "settings/animation";
+@use "settings/colors";
+@use "settings/global";
+@use "settings/containers";
+@use "settings/mq";
+@use "settings/spacing";
+@use "settings/typography";
+@use "settings/zindex";
+@use "settings/radius";
+
+/* ============================
+// $TOOLS
+// Mixins and functions
+*/
+@use "tools/font_size";
+@use "tools/functions";
+@use "tools/hover";
+@use "tools/mq" as mq2;
+@use "tools/object-fit";
+@use "tools/position";
+@use "tools/ratio";
+@use "tools/zindex" as zindex2;
+@use "tools/animation" as animation2;
+
+/* ============================
+// $ELEMENTS
+// Single HTML element selectors without classes
+*/
+@use "elements/normalize";
+@use "elements/address";
+@use "elements/iframe";
+@use "elements/image";
+@use "elements/list";
+@use "elements/page";
+@use "elements/table";
+@use "elements/type";
+
+/* ============================
+// $OBJECTS
+// Classes for page structure typically following the OOCSS methodology
+// The first layer in which we find class-level specificity
+*/
+
+@use "objects/ar";
+@use "objects/container";
+@use "objects/flex";
+@use "objects/img";
+@use "objects/media";
+@use "objects/row";
+@use "objects/grid";
+@use "objects/bg";
+@use "objects/list" as list2;
+@use "objects/main";
+
+/* ============================
+// $TYPOGRAPHY
+// Classes for the display and control of your typography.
+// These elements sit loosely between objects and components and in turn can be overridden on a piece of UI
+*/
+@use "typography/font";
+
+/* ============================
+//	$COMPONENTS
+//  Classes for styling any & all UI elements (often combined with the structure of object classes)
+//  Keep to DRY principles  ( [D]ont [R]epeat [Y]ourself )
+*/
+@use "components/spinner";
+
+/* ============================
+// $UTILITIES
+// utilities classes in accordance with DRY mentality.
+// Eliminates the need to create specific classes to perform simple tasks
+// NOTE: Use sparingly
+*/
+@use "utilities/util";
+@use "utilities/anim";

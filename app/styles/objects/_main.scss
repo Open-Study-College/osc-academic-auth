@@ -1,0 +1,5 @@
+@use "../settings/colors";
+
+.o-main {
+    background-color: colors.$colour-tertiary;
+}

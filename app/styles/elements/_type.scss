@@ -1,0 +1,51 @@
+@use "../settings/colors";
+@use "../settings/spacing";
+@use "../settings/typography";
+@use "../tools/font_size";
+
+///*----------------------------------*\
+//  #TYPE
+//\*----------------------------------*/
+//
+// Basic Typography styles
+//
+//\*----------------------------------*/
+
+p {
+    margin: 0 0 spacing.$global-spacing-s * 2;
+}
+
+a {
+    color: inherit;
+    text-decoration: underline;
+
+    &,
+    &:active,
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+small {
+    @include font_size.font-size(typography.$size-micro);
+}
+
+a[href],
+button,
+input,
+select,
+textarea {
+    &:focus {
+        box-shadow: 0 0 0 0.5rem colors.$colour-tertiary, 0 0 0 0.75rem colors.$colour-primary; /* outline color here */
+
+        &:not(:focus-visible) {
+            box-shadow: none;
+        }
+    }
+}
+
+input,
+select,
+textarea {
+    @include font_size.font-size(typography.$base-font-size);
+}

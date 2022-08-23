@@ -1,0 +1,205 @@
+///*----------------------------------*\
+//  #ANIMATION SETTINGS
+//\*----------------------------------*/
+//
+// Easing Types
+// Cubic Bezier performs better than regular easing types e.g "linear"
+//
+//\*----------------------------------*/
+
+// Usage:
+// transition: 0.6s $ease-in-out transform;
+
+$timing: 300ms; // 300ms
+$timing-s: calc($timing / 2); // 150ms
+$timing-m: $timing * 2; // 600ms
+$timing-l: $timing * 2.5; // 750ms
+
+$delay: 500ms; // 500ms
+$delay-m: $delay * 1.5; // 750ms
+$delay-l: $delay * 2; // 1000ms
+$delay-xl: $delay * 2.5; // 1250ms
+
+$linear: cubic-bezier(0.25, 0.25, 0.75, 0.75);
+$ease-in: cubic-bezier(0.82, 0, 1, 0.64);
+$ease-out: cubic-bezier(0.2, 0.47, 0.43, 0.97);
+$ease-out-sine: cubic-bezier(0.39, 0.57, 0.56, 1);
+$ease-out-circ: cubic-bezier(0.07, 0.82, 0.16, 1);
+$ease-out-quart: cubic-bezier(0.17, 0.84, 0.44, 1);
+$ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+$ease-in-out-quint: cubic-bezier(0.5, 0, 0.5, 1);
+$ease-in-out-circ: cubic-bezier(0.79, 0.14, 0.15, 0.86);
+$ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+$ease-in-out-quad: cubic-bezier(0.45, 0.03, 0.52, 0.95);
+$ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
+$ease-in-out-quart: cubic-bezier(0.77, 0, 0.17, 1);
+$animations: (
+    "fade-in": (
+        0%: (
+            opacity: 0
+        ),
+        100%: (
+            opacity: 1
+        )
+    ),
+    "fade-out": (
+        0%: (
+            opacity: 1
+        ),
+        100%: (
+            opacity: 0
+        )
+    ),
+    "fade-in-up": (
+        0%: (
+            transform: translate3d(0, 100px, 0),
+            opacity: 0
+        ),
+        100%: (
+            transform: translate3d(0, 0, 0),
+            opacity: 1
+        )
+    ),
+    "fade-in-left": (
+        0%: (
+            transform: translate3d(-20%, 0, 0),
+            opacity: 0
+        ),
+        100%: (
+            transform: translate3d(0, 0, 0),
+            opacity: 1
+        )
+    ),
+    "fade-in-right": (
+        0%: (
+            transform: translate3d(20%, 0, 0),
+            opacity: 0
+        ),
+        100%: (
+            transform: translate3d(0, 0, 0),
+            opacity: 1
+        )
+    ),
+    "slide-in": (
+        0%: (
+            transform: translate3d(-100%, 0, 0)
+        ),
+        (40%, 60%):
+            (
+                transform: translate3d(0%, 0, 0),
+                animation-delay: 1s
+            ),
+        100%: (
+            transform: translate3d(100%, 0, 0)
+        )
+    ),
+    "reveal": (
+        0%: (
+            transform: scaleY(0),
+            opacity: 0
+        ),
+        100%: (
+            transform: scaleY(1),
+            opacity: 1
+        )
+    ),
+    "reveal-left": (
+        0%: (
+            transform: scaleX(0),
+            opacity: 0
+        ),
+        100%: (
+            transform: scaleX(1),
+            opacity: 1
+        )
+    ),
+    "reveal-right": (
+        0%: (
+            transform: scaleX(0),
+            opacity: 0
+        ),
+        100%: (
+            transform: scaleX(1),
+            opacity: 1
+        )
+    ),
+    "scale": (
+        0%: (
+            transform: scale(0),
+            opacity: 0
+        ),
+        100%: (
+            transform: scale(1),
+            opacity: 1
+        )
+    ),
+    "jingleBell": (
+        0%: (
+            top: 0
+        ),
+        100%: (
+            top: calc(100% - 19px)
+        )
+    ),
+    "drawLine": (
+        to: (
+            transform: scaleY(1)
+        )
+    ),
+    "spin": (
+        100%: (
+            transform: rotate(360deg)
+        )
+    ),
+    "bounce": (
+        0%: (
+            transform: translateY(0)
+        ),
+        50%: (
+            transform: translateY(-10px)
+        ),
+        100%: (
+            transform: translateY(0)
+        )
+    ),
+    "breathe": (
+        0%: (
+            transform: scale(0.9)
+        ),
+        25%: (
+            transform: scale(1)
+        ),
+        60%: (
+            transform: scale(0.9)
+        ),
+        100%: (
+            transform: scale(0.9)
+        )
+    ),
+    "promo": (
+        0%: (
+            transform: translate3d(100%, 0, 0)
+        ),
+        (1%, 47%):
+            (
+                transform: translate3d(0%, 0, 0)
+            ),
+        (49%, 99%):
+            (
+                transform: translate3d(-100%, 0, 0)
+            ),
+        100%: (
+            transform: translate3d(-200%, 0, 0)
+        )
+    ),
+    "subnav": (
+        0%: (
+            opacity: 0,
+            visibility: hidden
+        ),
+        100%: (
+            opacity: 1,
+            visibility: visible
+        )
+    )
+);

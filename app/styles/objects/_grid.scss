@@ -1,0 +1,210 @@
+@use "../settings/mq" as settings-mq;
+@use "../settings/spacing";
+@use "../tools/mq" as tools-mq;
+
+/* ============================
+// $GRID LAYOUT OBJECT
+// A structural element that allows construction of elements using the grid layout system
+*/
+
+/* ============================
+//  Usage:
+//
+// <div class="o-grid  o-grid--half | quarts | fifths">
+//     <div class="o-grid__item  o-grid__item--top | bottom">
+//         ...
+//     </div>
+// </div>
+*/
+
+.o-grid {
+    display: grid;
+    width: 100%;
+    margin: 0;
+    gap: spacing.$global-spacing;
+    grid-auto-rows: spacing.$global-spacing * 2;
+    grid-template-columns: repeat(1, 1fr);
+
+    @include tools-mq.mq(settings-mq.$mq-mob--med, min) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include tools-mq.mq(settings-mq.$mq-tab--sml, min) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include tools-mq.mq(settings-mq.$mq-desk, min) {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    &--full {
+        grid-auto-rows: auto;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    &--half {
+        grid-auto-rows: auto;
+
+        @include tools-mq.mq(settings-mq.$mq-mob--lrg, min) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: spacing.$global-spacing;
+        }
+    }
+
+    &--thirds {
+        grid-auto-rows: auto;
+
+        @include tools-mq.mq(settings-mq.$mq-tab--sml, min) {
+            grid-template-columns: repeat(3, 1fr);
+            gap: spacing.$global-spacing;
+        }
+    }
+
+    &--quarts {
+        grid-auto-rows: auto;
+
+        @include tools-mq.mq(settings-mq.$mq-mob--lrg, min) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include tools-mq.mq(settings-mq.$mq-tab--lrg, min) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    &--fifths {
+        grid-auto-rows: auto;
+
+        @include tools-mq.mq(settings-mq.$mq-tab--sml, min) {
+            grid-template-columns: repeat(5, 1fr);
+            gap: spacing.$global-spacing * 2;
+        }
+    }
+
+    &--three-fifths {
+        grid-auto-rows: auto;
+
+        @include tools-mq.mq(settings-mq.$mq-tab--sml, min) {
+            grid-template-columns: 60% 40%;
+            gap: spacing.$global-spacing;
+        }
+    }
+
+    &--three-quarts {
+        grid-auto-rows: auto;
+
+        @include tools-mq.mq(settings-mq.$mq-tab--sml, min) {
+            grid-template-columns: 25% 70%;
+            gap: spacing.$global-spacing;
+        }
+    }
+
+    &--eighths {
+        grid-auto-rows: auto;
+        grid-template-columns: repeat(2, 1fr);
+        gap: spacing.$global-spacing-s * 2;
+
+        @include tools-mq.mq(settings-mq.$mq-tab--sml, min) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        @include tools-mq.mq(settings-mq.$mq-desk--lrg, min) {
+            grid-template-columns: repeat(8, 1fr);
+        }
+    }
+
+    &--flex {
+        grid-auto-rows: auto;
+        grid-template-columns: repeat(1, 1fr);
+        gap: spacing.$global-spacing;
+
+        @include tools-mq.mq(settings-mq.$mq-mob--med) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include tools-mq.mq(settings-mq.$mq-tab--sml) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @include tools-mq.mq(settings-mq.$mq-tab--lrg) {
+            grid-template-columns: repeat(var(--grid-count), 1fr);
+        }
+    }
+
+    &--auto {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        grid-auto-rows: auto;
+    }
+
+    &--top {
+        align-items: flex-start;
+    }
+
+    &--center {
+        justify-content: center;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    &--bottom {
+        align-items: flex-end;
+    }
+
+    &.is-flush {
+        gap: 0;
+    }
+
+    &.is-spaced {
+        gap: spacing.$global-spacing * 2;
+
+        @include tools-mq.mq(settings-mq.$mq-mob--lrg, min) {
+            gap: spacing.$global-spacing-l;
+        }
+    }
+
+    &.is-tight {
+        gap: spacing.$global-spacing-s;
+    }
+
+    &__item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        &--left,
+        &--top {
+            justify-content: flex-start;
+        }
+
+        &--bottom {
+            justify-content: flex-end;
+        }
+
+        &--fixed {
+            max-width: 200px;
+        }
+
+        &:last-child {
+            [data-grid-count="3"] & {
+                @include tools-mq.mq((settings-mq.$mq-mob--med, settings-mq.$mq-tab--sml)) {
+                    grid-column: 1 / span 2;
+                }
+            }
+        }
+    }
+
+    &__media {
+        display: flex;
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        overflow: hidden;
+
+        // stylelint-disable-next-line
+        svg {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+}

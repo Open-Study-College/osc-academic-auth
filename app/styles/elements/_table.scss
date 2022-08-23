@@ -1,0 +1,14 @@
+@use "../settings/colors";
+@use "../settings/spacing";
+
+table {
+    border-color: colors.$colour-primary;
+}
+
+tr {
+    vertical-align: baseline;
+}
+
+td {
+    padding: spacing.$global-spacing-s;
+}

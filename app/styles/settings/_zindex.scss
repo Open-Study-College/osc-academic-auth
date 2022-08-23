@@ -1,0 +1,33 @@
+///*----------------------------------*\
+//  #Z-INDEX SETTINGS
+//\*----------------------------------*/
+//
+//  Z-index mapping: Correctly place your variable in the correct position based on what it should appear above and behind.
+//  Utilises mixin from tools/zindex
+//
+//\*----------------------------------*/
+
+// Usage:
+// $z-index: (
+//     "header",
+//     "navigation",
+//     "footer",
+// );
+//
+// @include z-index(header);
+
+$z-index: (
+    "bg",
+    "button",
+    "title",
+    "header",
+    "navigation",
+    "hamburger",
+    "gallery",
+    "overlay",
+    "popout",
+    "skip-content",
+    "sub-navigation",
+    "discount-banner",
+    "modal"
+);

@@ -1,0 +1,23 @@
+@use "../settings/colors";
+@use "../settings/typography" as *;
+@use "../tools/font_size" as *;
+
+html {
+    height: 100%;
+    color: colors.$colour-secondary;
+    font-size: 62.5%;
+    font-weight: $weight-reg;
+    -webkit-tap-highlight-color: transparent;
+    text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    line-sizing: normal;
+}
+
+body {
+    overflow-x: hidden;
+
+    @include font-size($base-font-size, $base-line-height);
+
+    font-family: $font-primary;
+    -webkit-font-smoothing: antialiased;
+}

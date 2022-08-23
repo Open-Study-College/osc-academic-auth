@@ -1,0 +1,76 @@
+/* stylelint-disable plugin/selector-bem-pattern */
+
+@use "../tools/ratio" as ar;
+
+/* ============================
+// $FLEXIBLE MEDIA
+// For use with media embeds – such as images, videos or any other media elements –
+// that need to retain a specific aspect ratio but adapt to the width of their
+// containing element
+// REF: suit-flex-embed v1.4.0 | MIT License | github.com/suitcss
+*/
+
+/* ============================
+// Usage:
+//
+//  <div class="o-ar  o-ar--4by3">
+//      <img class="o-ar__item" src="..." alt="">
+//  </div>
+//
+//  Based on: http://alistapart.com/article/creating-intrinsic-ratios-for-video
+//      e.g. To create a 16:9 ratio, we do the following:
+//          (9 / 16) * 100 = 56.25
+*/
+
+// prettier-ignore
+$aspect-ratios: (
+    "1by1":  4 3
+);
+
+.o-ar {
+    position: relative;
+    display: block;
+    overflow: hidden;
+
+    /**
+    * A pseudo-element shunt is used to provide support for `max-height`. The
+    * `max-height` property has no affect when using a percentage-padding to set
+    * the aspect ratio.
+    */
+
+    &::before {
+        content: "";
+        position: relative;
+        display: block;
+        pointer-events: none;
+    }
+
+    @each $css_class, $aspect-ratio in $aspect-ratios {
+        /**
+        * Modifier: #{$css_class} aspect ratio
+        @debug $css_class;
+        */
+
+        &--#{$css_class} {
+            @include ar.ratio($aspect-ratio);
+            @debug $aspect-ratio;
+        }
+    }
+
+    /**
+    * Descendant: media element
+    *
+    * Utility of the component is improved by providing an explicit descendant
+    * class. However, it will work automatically for iframes, embeds, and objects
+    * to account for times when you cannot modify the attributes for 3rd party
+    * widget code.
+    */
+
+    &__item,
+    iframe,
+    embed,
+    object {
+        width: 100%;
+        height: 100%;
+    }
+}

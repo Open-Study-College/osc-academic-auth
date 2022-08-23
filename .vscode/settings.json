@@ -1,0 +1,18 @@
+{
+  "debug.javascript.autoAttachFilter": "disabled",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "redhat.telemetry.enabled": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "stylelint.enable": true,
+  "less.validate": false,
+  "stylelint.validate": ["scss"],
+  "scss.validate": false,
+  "css.validate": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": true
+  }
+}

@@ -1,0 +1,6 @@
+iframe,
+video {
+    &:fullscreen {
+        transform: none;
+    }
+}

@@ -1,0 +1,59 @@
+@use "../settings/spacing";
+
+/* ============================
+// $ROW WRAPPER
+// A structural element that allows containerisation of objects and components while also
+// applying vertical rhythym of said components. Grid elements can be used within the row object.
+*/
+
+/* ============================
+//  Usage:
+//
+//  <div class="o-row"> ... </div>
+*/
+
+.o-row {
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    margin: 0 auto spacing.$global-spacing;
+    background-size: cover;
+
+    // content-visibility: auto;
+    // contain: layout;
+
+    &--n {
+        margin-bottom: 0;
+    }
+
+    &--s {
+        margin-bottom: spacing.$global-spacing-s;
+    }
+
+    &--m {
+        margin-bottom: spacing.$global-spacing-m;
+    }
+
+    &--l {
+        margin-bottom: spacing.$global-spacing-l;
+    }
+
+    &--xl {
+        margin-bottom: spacing.$global-spacing-xl;
+    }
+
+    &--padded {
+        padding-top: spacing.$global-spacing-m;
+        padding-bottom: spacing.$global-spacing;
+
+        &-sml {
+            padding-top: spacing.$global-spacing;
+            padding-bottom: spacing.$global-spacing;
+        }
+    }
+
+    &--centre {
+        justify-content: center;
+    }
+}

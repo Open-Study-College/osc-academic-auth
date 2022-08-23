@@ -1,0 +1,22 @@
+.c-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border: 10px solid transparent;
+    border-top: 10px solid;
+    border-bottom: 10px solid;
+    border-radius: 50%;
+    animation: rotate 1.8s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
