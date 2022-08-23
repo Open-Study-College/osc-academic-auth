@@ -1,0 +1,202 @@
+@use "../settings" as s;
+@use "../tools" as t;
+
+/* ============================
+// $FLEX LAYOUT OBJECT
+// A structural element that allows construction of elements using the flexbox layout system
+*/
+
+/* ============================
+//  Usage:
+//
+//  <div class="o-flex"> ... </div>
+*/
+
+.o-flex {
+    display: flex;
+    flex-direction: row;
+
+    // Flex Object Modifiers
+    // ==========================================================================
+
+    &--stack {
+        flex-direction: column;
+    }
+
+    &--stack-reverse {
+        flex-direction: column-reverse;
+    }
+
+    &--stacked {
+        flex-flow: column nowrap;
+    }
+
+    &--inline {
+        flex-direction: row;
+    }
+
+    &--inline-reverse {
+        flex-direction: row-reverse;
+    }
+
+    &--wrap {
+        flex-flow: row wrap;
+    }
+
+    &--nowrap {
+        flex-wrap: nowrap;
+    }
+
+    &--v-top {
+        align-items: flex-start;
+    }
+
+    &--v-bottom {
+        align-items: flex-end;
+    }
+
+    &--v-center {
+        align-items: center;
+    }
+
+    &--v-stretch {
+        align-items: stretch;
+    }
+
+    &--v-baseline {
+        align-items: baseline;
+    }
+
+    &--center {
+        justify-content: center;
+    }
+
+    &--start {
+        justify-content: flex-start;
+    }
+
+    &--end {
+        justify-content: flex-end;
+    }
+
+    &--between {
+        justify-content: space-between;
+    }
+
+    &--around {
+        justify-content: space-around;
+    }
+
+    &--spaced {
+        gap: s.$global-spacing;
+    }
+
+    /* Hooks to hide elements based on the data-mq-hide attribute */
+    $flex-bp: (
+        desk-lrg: s.$mq-desk--lrg,
+        desk-med: s.$mq-desk--med,
+        desk: s.$mq-desk,
+        tab-lrg: s.$mq-tab--lrg,
+        tab: s.$mq-tab,
+        tab-sml: s.$mq-tab--sml,
+        mob-lrg: s.$mq-mob--lrg,
+        mob-med: s.$mq-mob--med,
+        mob: s.$mq-mob,
+        mob-sml: s.$mq-mob--sml
+    );
+
+    @each $alias, $mq in $flex-bp {
+        @include t.mq($mq) {
+            &[data-flex-reset="#{$alias}"] {
+                flex-direction: column;
+            }
+            &[data-flex-reset-rev="#{$alias}"] {
+                flex-direction: column-reverse;
+            }
+            &[data-flex-reset-row="#{$alias}"] {
+                flex-direction: row;
+            }
+            &[data-flex-reset-row-rev="#{$alias}"] {
+                flex-direction: row-reverse;
+            }
+        }
+    }
+
+    // ==========================================================================
+    // Flex Object Item
+    // ==========================================================================
+
+    &__item {
+        flex: 1 1 0;
+
+        &--auto {
+            flex: 1 1 auto;
+        }
+
+        &--full {
+            flex: 1 1 100%;
+        }
+
+        &--top {
+            align-self: flex-start;
+        }
+
+        &--bottom {
+            align-self: flex-end;
+        }
+
+        &--center {
+            align-self: center;
+        }
+
+        &--media {
+            display: flex;
+            flex: auto;
+            width: auto;
+            max-width: 150px;
+            height: auto;
+            overflow: hidden;
+
+            @include t.mq(s.$mq-global) {
+                max-width: 200px;
+            }
+        }
+    }
+
+    // ==========================================================================
+    // Flex Object Standalone Utilities
+    // ==========================================================================
+
+    // Flex Ordering
+    // ==========================================================================
+
+    .o-flex-first {
+        order: -1;
+    }
+
+    .o-flex-last {
+        order: 1;
+    }
+}
+
+$i-list: -1 0 1 2 3 4 5 6 7 8 9 10;
+
+// Flex Grow
+// ------ defines the ability for a flex item to grow if necessary
+// ==========================================================================
+@each $i in $i-list {
+    [data-flex-grow="#{$i}"] {
+        flex-grow: $i;
+    }
+}
+
+// Flex Order
+// ------ defines the ability for a flex item to be reordered if necessary
+// ==========================================================================
+@each $i in $i-list {
+    [data-flex-order="#{$i}"] {
+        @include t.mq(s.$mq-mob--med + 2, max) {
+            order: $i;
+        }
+    }
+}

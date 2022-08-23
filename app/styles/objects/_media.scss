@@ -1,0 +1,100 @@
+@use "../settings" as s;
+@use "../tools" as t;
+
+.o-media {
+    $mobile-padding: 1.5rem;
+    $desktop-padding: 0;
+    $media-spacing: (s.$global-spacing-s * 2);
+    $media-spacing-l: s.$global-spacing-m;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+
+    &--alternate {
+        flex-direction: row-reverse;
+    }
+
+    &__block {
+        display: flex;
+        width: 100%;
+        margin-top: $media-spacing;
+        margin-bottom: $media-spacing;
+        padding-right: $media-spacing;
+        padding-left: $media-spacing;
+
+        &--top {
+            align-items: flex-start;
+        }
+
+        &--center,
+        &--centre {
+            align-items: center;
+        }
+
+        &--bottom {
+            align-items: flex-end;
+        }
+
+        &--offset {
+            @include t.mq(s.$mq-desk--med) {
+                padding-left: s.$global-spacing-l;
+
+                /* stylelint-disable-next-line plugin/selector-bem-pattern */
+                [class*="--default"] & {
+                    padding-right: $media-spacing;
+                }
+
+                &-r {
+                    padding-right: $media-spacing-l;
+                }
+            }
+        }
+
+        &--reset {
+            margin: 0;
+            padding: 0;
+        }
+
+        @include t.mq(s.$mq-tab--lrg, min) {
+            &--1-4 {
+                max-width: 25%;
+            }
+
+            &--2-5 {
+                max-width: 35%;
+            }
+
+            &--1-2 {
+                max-width: 50%;
+            }
+
+            &--3-5 {
+                max-width: 65%;
+            }
+
+            &--3-4 {
+                max-width: 75%;
+            }
+        }
+    }
+
+    &__content {
+        @include t.mq(s.$mq-tab--lrg) {
+            /* stylelint-disable-next-line plugin/selector-bem-pattern */
+            [class*="--alternate"] & {
+                padding-right: 0;
+            }
+        }
+    }
+
+    &__img {
+        @include t.mq(s.$mq-tab--lrg) {
+            /* stylelint-disable-next-line plugin/selector-bem-pattern */
+            [class*="--alternate"] & {
+                padding-right: 0;
+            }
+        }
+    }
+}

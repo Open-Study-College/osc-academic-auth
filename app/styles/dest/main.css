@@ -1,0 +1,2660 @@
+@charset "UTF-8";
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+/* Document
+   ========================================================================== */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%;
+     -moz-text-size-adjust: 100%;
+          text-size-adjust: 100%; /* 2 */
+}
+
+/* Sections
+   ========================================================================== */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the `main` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+h1 {
+  margin: 0.67em 0;
+  font-size: 2em;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  position: relative;
+  vertical-align: baseline;
+  font-size: 75%;
+  line-height: 0;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove the border on images inside links in IE 10.
+ */
+img {
+  border-style: none;
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  margin: 0; /* 2 */
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+button,
+input {
+  /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+button,
+select {
+  /* 1 */
+  text-transform: none;
+}
+
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  -webkit-appearance: button;
+     -moz-appearance: button;
+          appearance: button;
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+button::-moz-focus-inner,
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
+  padding: 0;
+  border-style: none;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+button:-moz-focusring,
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Correct the padding in Firefox.
+ */
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+legend {
+  display: table; /* 1 */
+  box-sizing: border-box; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  color: inherit; /* 2 */
+  white-space: normal; /* 1 */
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10.
+ * 2. Remove the padding in IE 10.
+ */
+[type=checkbox],
+[type=radio] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+[type=search] {
+  outline-offset: -2px; /* 2 */
+  -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield; /* 1 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+          appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+::-webkit-file-upload-button {
+  font: inherit; /* 2 */
+  -webkit-appearance: button;
+          appearance: button; /* 1 */
+}
+
+/* Interactive
+   ========================================================================== */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/* Misc
+   ========================================================================== */
+/**
+ * Add the correct display in IE 10+.
+ */
+template {
+  display: none;
+}
+
+/**
+ * Add the correct display in IE 10.
+ */
+[hidden] {
+  display: none;
+}
+
+address {
+  font-style: normal;
+}
+
+iframe:-webkit-full-screen, video:-webkit-full-screen {
+  transform: none;
+}
+
+iframe:fullscreen,
+video:fullscreen {
+  transform: none;
+}
+
+img {
+  display: block;
+  vertical-align: middle; /* [3] */
+  max-width: 100%; /* [1] */
+  font-style: italic; /* [2] */
+}
+
+svg:not(:root) {
+  fill: currentcolor;
+}
+
+:root {
+  --colour-pink: #e6126a;
+  --colour-navy: #272145;
+  --colour-white: #fff;
+  --colour-mint: #40bfad;
+  --colour-grey: #f1f1f1;
+  --colour-black: #131313;
+  --colour-light-pink: #f3b3d2;
+  --colour-light-blue: #8ed2d6;
+  --colour-mid-blue: #444a99;
+  --colour-red: #ea5338;
+  --colour-yellow: #e9e078;
+  --colour-error: #b42c2c;
+  --colour-success: #469132;
+  --colour-notice: #d87a00;
+  --colour-disabled: #dcdddf;
+  --colour-shadow: rgba(19, 19, 19, 0.05);
+  --colour-shadow-l: #cbcbcb;
+}
+
+/* ============================
+// $SETTINGS
+// Preprocessor variables and methods
+*/
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+li {
+  list-style: inherit;
+  /*
+  * 1. Add zero-width-space to prevent VoiceOver disable
+  * 2. Absolute position ensures no extra space
+  * See: https://unfetteredthoughts.net/2017/09/26/voiceover-and-list-style-type-none/
+  */
+}
+li:not([class]) {
+  margin: 0 0 1rem;
+}
+nav li::before {
+  content: "​";
+  position: absolute;
+}
+
+dl {
+  margin-bottom: 10px;
+  line-height: 1;
+}
+
+dt,
+dd {
+  display: inline-block;
+}
+
+dt {
+  font-weight: normal;
+}
+
+dd {
+  margin: 0;
+  padding: 0 0 0 40px;
+}
+
+/*
+	This mixin can be used to set the object-fit:
+	@include object-fit(contain);
+	or object-fit and object-position:
+	@include object-fit(cover, top);
+*/
+/* ============================
+// $TOOLS
+// Mixins and functions
+*/
+html {
+  height: 100%;
+  color: var(--colour-navy);
+  font-size: 62.5%;
+  font-weight: 400;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+     -moz-text-size-adjust: 100%;
+          text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  line-sizing: normal;
+}
+
+body {
+  overflow-x: hidden;
+  font-size: 1.6rem;
+  line-height: 1.33;
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+table {
+  border-color: var(--colour-pink);
+}
+
+tr {
+  vertical-align: baseline;
+}
+
+td {
+  padding: 1rem;
+}
+
+p {
+  margin: 0 0 2rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+}
+a, a:active, a:hover {
+  text-decoration: none;
+}
+
+small {
+  font-size: 1rem;
+}
+
+a[href]:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  box-shadow: 0 0 0 0.5rem var(--colour-white), 0 0 0 0.75rem var(--colour-pink); /* outline color here */
+}
+a[href]:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+select:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible) {
+  box-shadow: none;
+}
+
+input,
+select,
+textarea {
+  font-size: 1.6rem;
+}
+
+/* stylelint-disable plugin/selector-bem-pattern */
+/* ============================
+// $FLEXIBLE MEDIA
+// For use with media embeds – such as images, videos or any other media elements –
+// that need to retain a specific aspect ratio but adapt to the width of their
+// containing element
+// REF: suit-flex-embed v1.4.0 | MIT License | github.com/suitcss
+*/
+/* ============================
+// Usage:
+//
+//  <div class="o-ar  o-ar--4by3">
+//      <img class="o-ar__item" src="..." alt="">
+//  </div>
+//
+//  Based on: http://alistapart.com/article/creating-intrinsic-ratios-for-video
+//      e.g. To create a 16:9 ratio, we do the following:
+//          (9 / 16) * 100 = 56.25
+*/
+.o-ar {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  /**
+  * A pseudo-element shunt is used to provide support for `max-height`. The
+  * `max-height` property has no affect when using a percentage-padding to set
+  * the aspect ratio.
+  */
+  /**
+  * Modifier: 1by1 aspect ratio
+  @debug $css_class;
+  */
+  /**
+  * Descendant: media element
+  *
+  * Utility of the component is improved by providing an explicit descendant
+  * class. However, it will work automatically for iframes, embeds, and objects
+  * to account for times when you cannot modify the attributes for 3rd party
+  * widget code.
+  */
+}
+.o-ar::before {
+  content: "";
+  position: relative;
+  display: block;
+  pointer-events: none;
+}
+.o-ar--1by1 {
+  aspect-ratio: 4 / 3;
+}
+@supports not (aspect-ratio: 1.3333333333) {
+  .o-ar--1by1::before {
+    padding-bottom: 75%;
+  }
+}
+.o-ar__item,
+.o-ar iframe,
+.o-ar embed,
+.o-ar object {
+  width: 100%;
+  height: 100%;
+}
+
+.o-container {
+  width: 100%;
+  max-width: 1440px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+}
+.o-container--flush {
+  padding-right: 0;
+  padding-left: 0;
+}
+@media screen and (max-width: 767px) {
+  .o-container--flush-alt-r {
+    padding-right: 0;
+  }
+}
+@media screen and (max-width: 767px) {
+  .o-container--flush-alt-l {
+    padding-left: 0;
+  }
+}
+.o-container--pad-r {
+  padding-right: 0;
+}
+@media screen and (min-width: 768px) {
+  .o-container--pad-r {
+    padding-right: 6rem;
+  }
+}
+.o-container--pad-l {
+  padding-left: 0;
+}
+@media screen and (min-width: 768px) {
+  .o-container--pad-l {
+    padding-left: 6rem;
+  }
+}
+.o-container--xsmall {
+  max-width: calc(610px + 5rem);
+}
+.o-container--small {
+  max-width: calc(960px + 1.5rem);
+}
+.o-container--medium {
+  max-width: calc(1140px + 1.5rem);
+}
+.o-container--large {
+  max-width: calc(1440px + 1.5rem);
+}
+.o-container--xlarge {
+  max-width: calc(1680px + 1.5rem);
+}
+.o-container--full {
+  max-width: 100%;
+}
+.o-container-fluid {
+  padding: 1.5rem;
+}
+
+/* ============================
+// $FLEX LAYOUT OBJECT
+// A structural element that allows construction of elements using the flexbox layout system
+*/
+/* ============================
+//  Usage:
+//
+//  <div class="o-flex"> ... </div>
+*/
+.o-flex {
+  display: flex;
+  flex-direction: row;
+  /* Hooks to hide elements based on the data-mq-hide attribute */
+}
+.o-flex--stack {
+  flex-direction: column;
+}
+.o-flex--stack-reverse {
+  flex-direction: column-reverse;
+}
+.o-flex--stacked {
+  flex-flow: column nowrap;
+}
+.o-flex--inline {
+  flex-direction: row;
+}
+.o-flex--inline-reverse {
+  flex-direction: row-reverse;
+}
+.o-flex--wrap {
+  flex-flow: row wrap;
+}
+.o-flex--nowrap {
+  flex-wrap: nowrap;
+}
+.o-flex--v-top {
+  align-items: flex-start;
+}
+.o-flex--v-bottom {
+  align-items: flex-end;
+}
+.o-flex--v-center {
+  align-items: center;
+}
+.o-flex--v-stretch {
+  align-items: stretch;
+}
+.o-flex--v-baseline {
+  align-items: baseline;
+}
+.o-flex--center {
+  justify-content: center;
+}
+.o-flex--start {
+  justify-content: flex-start;
+}
+.o-flex--end {
+  justify-content: flex-end;
+}
+.o-flex--between {
+  justify-content: space-between;
+}
+.o-flex--around {
+  justify-content: space-around;
+}
+.o-flex--spaced {
+  gap: 3rem;
+}
+@media screen and (min-width: 1150px) {
+  .o-flex[data-flex-reset=desk-lrg] {
+    flex-direction: column;
+  }
+  .o-flex[data-flex-reset-rev=desk-lrg] {
+    flex-direction: column-reverse;
+  }
+  .o-flex[data-flex-reset-row=desk-lrg] {
+    flex-direction: row;
+  }
+  .o-flex[data-flex-reset-row-rev=desk-lrg] {
+    flex-direction: row-reverse;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .o-flex[data-flex-reset=desk-med] {
+    flex-direction: column;
+  }
+  .o-flex[data-flex-reset-rev=desk-med] {
+    flex-direction: column-reverse;
+  }
+  .o-flex[data-flex-reset-row=desk-med] {
+    flex-direction: row;
+  }
+  .o-flex[data-flex-reset-row-rev=desk-med] {
+    flex-direction: row-reverse;
+  }
+}
+@media screen and (min-width: 960px) {
+  .o-flex[data-flex-reset=desk] {
+    flex-direction: column;
+  }
+  .o-flex[data-flex-reset-rev=desk] {
+    flex-direction: column-reverse;
+  }
+  .o-flex[data-flex-reset-row=desk] {
+    flex-direction: row;
+  }
+  .o-flex[data-flex-reset-row-rev=desk] {
+    flex-direction: row-reverse;
+  }
+}
+@media screen and (min-width: 820px) {
+  .o-flex[data-flex-reset=tab-lrg] {
+    flex-direction: column;
+  }
+  .o-flex[data-flex-reset-rev=tab-lrg] {
+    flex-direction: column-reverse;
+  }
+  .o-flex[data-flex-reset-row=tab-lrg] {
+    flex-direction: row;
+  }
+  .o-flex[data-flex-reset-row-rev=tab-lrg] {
+    flex-direction: row-reverse;
+  }
+}
+@media screen and (min-width: 768px) {
+  .o-flex[data-flex-reset=tab] {
+    flex-direction: column;
+  }
+  .o-flex[data-flex-reset-rev=tab] {
+    flex-direction: column-reverse;
+  }
+  .o-flex[data-flex-reset-row=tab] {
+    flex-direction: row;
+  }
+  .o-flex[data-flex-reset-row-rev=tab] {
+    flex-direction: row-reverse;
+  }
+}
+@media screen and (min-width: 765px) {
+  .o-flex[data-flex-reset=tab-sml] {
+    flex-direction: column;
+  }
+  .o-flex[data-flex-reset-rev=tab-sml] {
+    flex-direction: column-reverse;
+  }
+  .o-flex[data-flex-reset-row=tab-sml] {
+    flex-direction: row;
+  }
+  .o-flex[data-flex-reset-row-rev=tab-sml] {
+    flex-direction: row-reverse;
+  }
+}
+@media screen and (min-width: 640px) {
+  .o-flex[data-flex-reset=mob-lrg] {
+    flex-direction: column;
+  }
+  .o-flex[data-flex-reset-rev=mob-lrg] {
+    flex-direction: column-reverse;
+  }
+  .o-flex[data-flex-reset-row=mob-lrg] {
+    flex-direction: row;
+  }
+  .o-flex[data-flex-reset-row-rev=mob-lrg] {
+    flex-direction: row-reverse;
+  }
+}
+@media screen and (min-width: 550px) {
+  .o-flex[data-flex-reset=mob-med] {
+    flex-direction: column;
+  }
+  .o-flex[data-flex-reset-rev=mob-med] {
+    flex-direction: column-reverse;
+  }
+  .o-flex[data-flex-reset-row=mob-med] {
+    flex-direction: row;
+  }
+  .o-flex[data-flex-reset-row-rev=mob-med] {
+    flex-direction: row-reverse;
+  }
+}
+@media screen and (min-width: 480px) {
+  .o-flex[data-flex-reset=mob] {
+    flex-direction: column;
+  }
+  .o-flex[data-flex-reset-rev=mob] {
+    flex-direction: column-reverse;
+  }
+  .o-flex[data-flex-reset-row=mob] {
+    flex-direction: row;
+  }
+  .o-flex[data-flex-reset-row-rev=mob] {
+    flex-direction: row-reverse;
+  }
+}
+@media screen and (min-width: 375px) {
+  .o-flex[data-flex-reset=mob-sml] {
+    flex-direction: column;
+  }
+  .o-flex[data-flex-reset-rev=mob-sml] {
+    flex-direction: column-reverse;
+  }
+  .o-flex[data-flex-reset-row=mob-sml] {
+    flex-direction: row;
+  }
+  .o-flex[data-flex-reset-row-rev=mob-sml] {
+    flex-direction: row-reverse;
+  }
+}
+.o-flex__item {
+  flex: 1 1 0;
+}
+.o-flex__item--auto {
+  flex: 1 1 auto;
+}
+.o-flex__item--full {
+  flex: 1 1 100%;
+}
+.o-flex__item--top {
+  align-self: flex-start;
+}
+.o-flex__item--bottom {
+  align-self: flex-end;
+}
+.o-flex__item--center {
+  align-self: center;
+}
+.o-flex__item--media {
+  display: flex;
+  flex: auto;
+  width: auto;
+  max-width: 150px;
+  height: auto;
+  overflow: hidden;
+}
+@media screen and (min-width: 768px) {
+  .o-flex__item--media {
+    max-width: 200px;
+  }
+}
+.o-flex .o-flex-first {
+  order: -1;
+}
+.o-flex .o-flex-last {
+  order: 1;
+}
+
+[data-flex-grow="-1"] {
+  flex-grow: -1;
+}
+
+[data-flex-grow="0"] {
+  flex-grow: 0;
+}
+
+[data-flex-grow="1"] {
+  flex-grow: 1;
+}
+
+[data-flex-grow="2"] {
+  flex-grow: 2;
+}
+
+[data-flex-grow="3"] {
+  flex-grow: 3;
+}
+
+[data-flex-grow="4"] {
+  flex-grow: 4;
+}
+
+[data-flex-grow="5"] {
+  flex-grow: 5;
+}
+
+[data-flex-grow="6"] {
+  flex-grow: 6;
+}
+
+[data-flex-grow="7"] {
+  flex-grow: 7;
+}
+
+[data-flex-grow="8"] {
+  flex-grow: 8;
+}
+
+[data-flex-grow="9"] {
+  flex-grow: 9;
+}
+
+[data-flex-grow="10"] {
+  flex-grow: 10;
+}
+
+@media screen and (max-width: 551px) {
+  [data-flex-order="-1"] {
+    order: -1;
+  }
+}
+
+@media screen and (max-width: 551px) {
+  [data-flex-order="0"] {
+    order: 0;
+  }
+}
+
+@media screen and (max-width: 551px) {
+  [data-flex-order="1"] {
+    order: 1;
+  }
+}
+
+@media screen and (max-width: 551px) {
+  [data-flex-order="2"] {
+    order: 2;
+  }
+}
+
+@media screen and (max-width: 551px) {
+  [data-flex-order="3"] {
+    order: 3;
+  }
+}
+
+@media screen and (max-width: 551px) {
+  [data-flex-order="4"] {
+    order: 4;
+  }
+}
+
+@media screen and (max-width: 551px) {
+  [data-flex-order="5"] {
+    order: 5;
+  }
+}
+
+@media screen and (max-width: 551px) {
+  [data-flex-order="6"] {
+    order: 6;
+  }
+}
+
+@media screen and (max-width: 551px) {
+  [data-flex-order="7"] {
+    order: 7;
+  }
+}
+
+@media screen and (max-width: 551px) {
+  [data-flex-order="8"] {
+    order: 8;
+  }
+}
+
+@media screen and (max-width: 551px) {
+  [data-flex-order="9"] {
+    order: 9;
+  }
+}
+
+@media screen and (max-width: 551px) {
+  [data-flex-order="10"] {
+    order: 10;
+  }
+}
+
+/* ============================
+// $IMAGE OBJECT
+// Allow the control of image display using Lazyloading and Object-fit
+*/
+/* ============================
+//  Usage:
+//
+//  <div class="o-img"> ... </div>
+*/
+.o-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.3s ease-in;
+  opacity: 0;
+}
+.o-img:not([src]):not([srcset]) {
+  opacity: 0;
+}
+.o-img.is-loaded, .o-img.lazyloaded, .o-img.flickity-lazyloaded {
+  opacity: 1;
+}
+.o-img.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.o-img--cover {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  font-family: "object-fit: cover; object-position: center";
+}
+.o-img--cover-right {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: right;
+     object-position: right;
+  font-family: "object-fit: cover; object-position: right";
+}
+.o-img--cover-left {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: left;
+     object-position: left;
+  font-family: "object-fit: cover; object-position: left";
+}
+.o-img--contain {
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
+  font-family: "object-fit: contain; object-position: center";
+}
+.o-img--auto {
+  width: auto;
+  height: auto;
+}
+
+.o-media {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+.o-media--alternate {
+  flex-direction: row-reverse;
+}
+.o-media__block {
+  display: flex;
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+.o-media__block--top {
+  align-items: flex-start;
+}
+.o-media__block--center, .o-media__block--centre {
+  align-items: center;
+}
+.o-media__block--bottom {
+  align-items: flex-end;
+}
+@media screen and (min-width: 1024px) {
+  .o-media__block--offset {
+    padding-left: 11rem;
+    /* stylelint-disable-next-line plugin/selector-bem-pattern */
+  }
+  [class*="--default"] .o-media__block--offset {
+    padding-right: 2rem;
+  }
+  .o-media__block--offset-r {
+    padding-right: 5rem;
+  }
+}
+.o-media__block--reset {
+  margin: 0;
+  padding: 0;
+}
+@media screen and (min-width: 820px) {
+  .o-media__block--1-4 {
+    max-width: 25%;
+  }
+  .o-media__block--2-5 {
+    max-width: 35%;
+  }
+  .o-media__block--1-2 {
+    max-width: 50%;
+  }
+  .o-media__block--3-5 {
+    max-width: 65%;
+  }
+  .o-media__block--3-4 {
+    max-width: 75%;
+  }
+}
+@media screen and (min-width: 820px) {
+  .o-media__content {
+    /* stylelint-disable-next-line plugin/selector-bem-pattern */
+  }
+  [class*="--alternate"] .o-media__content {
+    padding-right: 0;
+  }
+}
+@media screen and (min-width: 820px) {
+  .o-media__img {
+    /* stylelint-disable-next-line plugin/selector-bem-pattern */
+  }
+  [class*="--alternate"] .o-media__img {
+    padding-right: 0;
+  }
+}
+
+/* ============================
+// $ROW WRAPPER
+// A structural element that allows containerisation of objects and components while also
+// applying vertical rhythym of said components. Grid elements can be used within the row object.
+*/
+/* ============================
+//  Usage:
+//
+//  <div class="o-row"> ... </div>
+*/
+.o-row {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  margin: 0 auto 3rem;
+  background-size: cover;
+}
+.o-row--n {
+  margin-bottom: 0;
+}
+.o-row--s {
+  margin-bottom: 1rem;
+}
+.o-row--m {
+  margin-bottom: 5rem;
+}
+.o-row--l {
+  margin-bottom: 11rem;
+}
+.o-row--xl {
+  margin-bottom: 21rem;
+}
+.o-row--padded {
+  padding-top: 5rem;
+  padding-bottom: 3rem;
+}
+.o-row--padded-sml {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+.o-row--centre {
+  justify-content: center;
+}
+
+/* ============================
+// $GRID LAYOUT OBJECT
+// A structural element that allows construction of elements using the grid layout system
+*/
+/* ============================
+//  Usage:
+//
+// <div class="o-grid  o-grid--half | quarts | fifths">
+//     <div class="o-grid__item  o-grid__item--top | bottom">
+//         ...
+//     </div>
+// </div>
+*/
+.o-grid {
+  display: grid;
+  width: 100%;
+  margin: 0;
+  gap: 3rem;
+  grid-auto-rows: 6rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+@media screen and (min-width: 550px) {
+  .o-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 765px) {
+  .o-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (min-width: 960px) {
+  .o-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+.o-grid--full {
+  grid-auto-rows: auto;
+  grid-template-columns: repeat(1, 1fr);
+}
+.o-grid--half {
+  grid-auto-rows: auto;
+}
+@media screen and (min-width: 640px) {
+  .o-grid--half {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+}
+.o-grid--thirds {
+  grid-auto-rows: auto;
+}
+@media screen and (min-width: 765px) {
+  .o-grid--thirds {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+}
+.o-grid--quarts {
+  grid-auto-rows: auto;
+}
+@media screen and (min-width: 640px) {
+  .o-grid--quarts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 820px) {
+  .o-grid--quarts {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.o-grid--fifths {
+  grid-auto-rows: auto;
+}
+@media screen and (min-width: 765px) {
+  .o-grid--fifths {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6rem;
+  }
+}
+.o-grid--three-fifths {
+  grid-auto-rows: auto;
+}
+@media screen and (min-width: 765px) {
+  .o-grid--three-fifths {
+    grid-template-columns: 60% 40%;
+    gap: 3rem;
+  }
+}
+.o-grid--three-quarts {
+  grid-auto-rows: auto;
+}
+@media screen and (min-width: 765px) {
+  .o-grid--three-quarts {
+    grid-template-columns: 25% 70%;
+    gap: 3rem;
+  }
+}
+.o-grid--eighths {
+  grid-auto-rows: auto;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+@media screen and (min-width: 765px) {
+  .o-grid--eighths {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media screen and (min-width: 1150px) {
+  .o-grid--eighths {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+.o-grid--flex {
+  grid-auto-rows: auto;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 3rem;
+}
+@media screen and (min-width: 550px) {
+  .o-grid--flex {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 765px) {
+  .o-grid--flex {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (min-width: 820px) {
+  .o-grid--flex {
+    grid-template-columns: repeat(var(--grid-count), 1fr);
+  }
+}
+.o-grid--auto {
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-auto-rows: auto;
+}
+.o-grid--top {
+  align-items: flex-start;
+}
+.o-grid--center {
+  justify-content: center;
+  margin-right: auto;
+  margin-left: auto;
+}
+.o-grid--bottom {
+  align-items: flex-end;
+}
+.o-grid.is-flush {
+  gap: 0;
+}
+.o-grid.is-spaced {
+  gap: 6rem;
+}
+@media screen and (min-width: 640px) {
+  .o-grid.is-spaced {
+    gap: 11rem;
+  }
+}
+.o-grid.is-tight {
+  gap: 1rem;
+}
+.o-grid__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.o-grid__item--left, .o-grid__item--top {
+  justify-content: flex-start;
+}
+.o-grid__item--bottom {
+  justify-content: flex-end;
+}
+.o-grid__item--fixed {
+  max-width: 200px;
+}
+@media screen and (min-width: 550px) and (max-width: 765px) {
+  [data-grid-count="3"] .o-grid__item:last-child {
+    grid-column: 1/span 2;
+  }
+}
+.o-grid__media {
+  display: flex;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+.o-grid__media svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.o-bg {
+  position: relative;
+  z-index: 1;
+}
+.o-bg::before {
+  display: flex;
+  width: 100%;
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: -1;
+  background-repeat: repeat-x;
+  opacity: 1;
+  pointer-events: none;
+}
+
+/* ============================
+// $GENERIC LIST OBJECT
+*/
+.o-list:not(.is-bare),
+[class*=c-content] ul:not(.is-bare),
+[class*=free-text] ul:not(.is-bare) {
+  width: 100%;
+  margin: 0 0 2rem;
+  padding: 0;
+}
+.o-list li,
+[class*=c-content] ul li,
+[class*=free-text] ul li {
+  position: relative;
+  display: list-item;
+  margin-bottom: 1rem;
+}
+.o-list li:last-of-type,
+[class*=c-content] ul li:last-of-type,
+[class*=free-text] ul li:last-of-type {
+  margin-bottom: 0;
+}
+.o-list ul,
+[class*=c-content] ul ul,
+[class*=free-text] ul ul {
+  padding-left: 3rem;
+}
+.o-list ul.is-child,
+[class*=c-content] ul ul.is-child,
+[class*=free-text] ul ul.is-child {
+  margin: 0;
+}
+.o-list ul ul,
+[class*=c-content] ul ul ul,
+[class*=free-text] ul ul ul {
+  margin-top: 1rem;
+}
+.o-list:not(.is-bare), .o-list--bullet:not(.is-bare),
+[class*=c-content] ul:not(.is-bare),
+[class*=c-content] ul--bullet:not(.is-bare),
+[class*=free-text] ul:not(.is-bare),
+[class*=free-text] ul--bullet:not(.is-bare) {
+  list-style: none outside none;
+}
+.o-list:not(.is-bare) li, .o-list--bullet:not(.is-bare) li,
+[class*=c-content] ul:not(.is-bare) li,
+[class*=c-content] ul--bullet:not(.is-bare) li,
+[class*=free-text] ul:not(.is-bare) li,
+[class*=free-text] ul--bullet:not(.is-bare) li {
+  padding-left: 2rem;
+}
+.o-list:not(.is-bare) li.has-children, .o-list--bullet:not(.is-bare) li.has-children,
+[class*=c-content] ul:not(.is-bare) li.has-children,
+[class*=c-content] ul--bullet:not(.is-bare) li.has-children,
+[class*=free-text] ul:not(.is-bare) li.has-children,
+[class*=free-text] ul--bullet:not(.is-bare) li.has-children {
+  padding-left: 0;
+  display: contents;
+}
+.o-list:not(.is-bare) li:not(.has-children)::before, .o-list--bullet:not(.is-bare) li:not(.has-children)::before,
+[class*=c-content] ul:not(.is-bare) li:not(.has-children)::before,
+[class*=c-content] ul--bullet:not(.is-bare) li:not(.has-children)::before,
+[class*=free-text] ul:not(.is-bare) li:not(.has-children)::before,
+[class*=free-text] ul--bullet:not(.is-bare) li:not(.has-children)::before {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  margin: auto 0;
+  background-color: var(--colour-mint);
+  border-radius: 50%;
+}
+.o-list--square,
+[class*=c-content] ul--square,
+[class*=free-text] ul--square {
+  list-style: square outside;
+}
+.o-list--circle,
+[class*=c-content] ul--circle,
+[class*=free-text] ul--circle {
+  list-style: circle outside;
+}
+.o-list--disc,
+[class*=c-content] ul--disc,
+[class*=free-text] ul--disc {
+  list-style: disc outside;
+}
+.o-list--counter,
+[class*=c-content] ul--counter,
+[class*=free-text] ul--counter {
+  list-style: decimal outside;
+}
+.o-list--reset,
+[class*=c-content] ul--reset,
+[class*=free-text] ul--reset {
+  list-style: none outside none;
+}
+
+.o-main {
+  background-color: var(--colour-white);
+}
+
+/* ============================
+// $FONT STYLES
+// Define our Font Elements/Classes.
+// We are able to utilise semantic H1-H6 but also override the presentation using the class convention
+*/
+/* ============================
+//  Usage:
+//
+// @param {*} elements - expects an element tag. recommended h1 - h6
+// @param {*} classes - expects desired class name
+// @param {*} font-size - expects a base font-size with option to add different sizes at different media queries
+
+// Usage:
+// <h1 class="t-font-beta"></h1>
+*/
+/* postcss-bem-linter: ignore */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+[class*=t-font] {
+  margin: 0 0 1rem;
+  font-style: normal;
+  font-weight: 700;
+  text-transform: none;
+}
+
+.t-font-primary {
+  font-family: Roboto, helvetica, arial, sans-serif;
+}
+.t-font-secondary {
+  font-family: Roboto Condensed, helvetica, arial, sans-serif;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 4.9rem;
+}
+
+.t-font-alpha {
+  font-size: 4.9rem;
+}
+
+@media screen and (min-width: 765px) {
+  h1 {
+    font-size: 6.5rem;
+  }
+}
+
+@media screen and (min-width: 765px) {
+  .t-font-alpha {
+    font-size: 6.5rem;
+  }
+}
+
+h2 {
+  font-size: 3.7rem;
+}
+
+.t-font-beta {
+  font-size: 3.7rem;
+}
+
+@media screen and (min-width: 765px) {
+  h2 {
+    font-size: 4.9rem;
+  }
+}
+
+@media screen and (min-width: 765px) {
+  .t-font-beta {
+    font-size: 4.9rem;
+  }
+}
+
+h3 {
+  font-size: 2.8rem;
+}
+
+.t-font-gamma {
+  font-size: 2.8rem;
+}
+
+@media screen and (min-width: 765px) {
+  h3 {
+    font-size: 3.7rem;
+  }
+}
+
+@media screen and (min-width: 765px) {
+  .t-font-gamma {
+    font-size: 3.7rem;
+  }
+}
+
+h4 {
+  font-size: 2.8rem;
+}
+
+.t-font-delta {
+  font-size: 2.8rem;
+}
+
+h5 {
+  font-size: 2.1rem;
+}
+
+.t-font-epsilon {
+  font-size: 2.1rem;
+}
+
+h6 {
+  font-size: 1.6rem;
+}
+
+.t-font-zeta {
+  font-size: 1.6rem;
+}
+
+.t-font-centi {
+  font-size: 1.4rem;
+}
+
+.t-font-milli {
+  font-size: 1.2rem;
+}
+
+.t-font-kilo {
+  font-size: 9.5rem;
+  line-height: 1;
+}
+
+@media screen and (min-width: 960px) {
+  .t-font-kilo {
+    font-size: 14rem;
+  }
+}
+
+.c-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border: 10px solid transparent;
+  border-top: 10px solid;
+  border-bottom: 10px solid;
+  border-radius: 50%;
+  -webkit-animation: rotate 1.8s linear infinite;
+          animation: rotate 1.8s linear infinite;
+}
+
+@-webkit-keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.u-mt-0 {
+  margin-top: 0px;
+}
+
+.u-mt-10 {
+  margin-top: 10px;
+}
+
+.u-mt-20 {
+  margin-top: 20px;
+}
+
+.u-mb-0 {
+  margin-bottom: 0px;
+}
+
+.u-mb-10 {
+  margin-bottom: 10px;
+}
+
+.u-mb-20 {
+  margin-bottom: 20px;
+}
+
+.u-mb-30 {
+  margin-bottom: 30px;
+}
+
+.u-mb-50 {
+  margin-bottom: 50px;
+}
+
+.u-mb-110 {
+  margin-bottom: 110px;
+}
+
+.u-mb-210 {
+  margin-bottom: 210px;
+}
+
+.u-mr-5 {
+  margin-right: 5px;
+}
+
+.u-mr-10 {
+  margin-right: 10px;
+}
+
+.u-ml-0 {
+  margin-left: 0px;
+}
+
+.u-ml-5 {
+  margin-left: 5px;
+}
+
+.u-ml-10 {
+  margin-left: 10px;
+}
+
+.u-pt-10 {
+  padding-top: 10px;
+}
+
+.u-pt-30 {
+  padding-top: 30px;
+}
+
+.u-pt-50 {
+  padding-top: 50px;
+}
+
+.u-pt-110 {
+  padding-top: 110px;
+}
+
+.u-pt-210 {
+  padding-top: 210px;
+}
+
+.u-pr-0 {
+  padding-right: 0px;
+}
+
+.u-pb-10 {
+  padding-bottom: 10px;
+}
+
+.u-pb-30 {
+  padding-bottom: 30px;
+}
+
+.u-pb-50 {
+  padding-bottom: 50px;
+}
+
+.u-pb-110 {
+  padding-bottom: 110px;
+}
+
+.u-pb-210 {
+  padding-bottom: 210px;
+}
+
+.u-pl-0 {
+  padding-left: 0px;
+}
+
+.u-p-0 {
+  padding: 0px;
+}
+
+.u-p-15 {
+  padding: 15px;
+}
+
+.u-br-10 {
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 767px) {
+  .u-plr-0\@tab {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+.no-padding {
+  padding: 0 !important;
+}
+
+.sr-only:not(:focus):not(:active) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media screen and (min-width: 820px) {
+  .u-hidden-from\@tab {
+    display: none;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .u-hidden-from\@desk-med {
+    display: none;
+  }
+}
+@media screen and (max-width: 819px) {
+  .u-hidden-until\@tab {
+    display: none;
+  }
+}
+@media screen and (max-width: 959px) {
+  .u-hidden-until\@desk {
+    display: none;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .u-hidden-until\@desk-med {
+    display: none;
+  }
+}
+
+[data-t-colour=primary],
+.u-colour-primary {
+  color: var(--colour-pink);
+}
+
+[data-t-colour=secondary],
+.u-colour-secondary {
+  color: var(--colour-navy);
+}
+
+[data-t-colour=tertiary],
+.u-colour-tertiary {
+  color: var(--colour-white);
+}
+
+[data-t-colour=quaternary],
+.u-colour-quaternary {
+  color: var(--colour-mint);
+}
+
+[data-t-colour=quinary],
+.u-colour-quinary {
+  color: var(--colour-grey);
+}
+
+[data-t-colour=senary],
+.u-colour-senary {
+  color: var(--colour-black);
+}
+
+[data-t-colour=septenary],
+.u-colour-septenary {
+  color: var(--colour-light-pink);
+}
+
+[data-t-colour=octonary],
+.u-colour-octonary {
+  color: var(--colour-light-blue);
+}
+
+[data-t-colour=nonary],
+.u-colour-nonary {
+  color: var(--colour-mid-blue);
+}
+
+[data-t-colour=denary],
+.u-colour-denary {
+  color: var(--colour-red);
+}
+
+[data-t-colour=duodenary],
+.u-colour-duodenary {
+  color: var(--colour-yellow);
+}
+
+[data-bg-colour=primary] {
+  background-color: var(--colour-pink);
+}
+
+[data-bg-colour=secondary] {
+  background-color: var(--colour-navy);
+}
+
+[data-bg-colour=tertiary] {
+  background-color: var(--colour-white);
+}
+
+[data-bg-colour=quaternary] {
+  background-color: var(--colour-mint);
+}
+
+[data-bg-colour=quinary] {
+  background-color: var(--colour-grey);
+}
+
+[data-bg-colour=senary] {
+  background-color: var(--colour-black);
+}
+
+[data-bg-colour=septenary] {
+  background-color: var(--colour-light-pink);
+}
+
+[data-bg-colour=octonary] {
+  background-color: var(--colour-light-blue);
+}
+
+[data-bg-colour=nonary] {
+  background-color: var(--colour-mid-blue);
+}
+
+[data-bg-colour=denary] {
+  background-color: var(--colour-red);
+}
+
+[data-bg-colour=duodenary] {
+  background-color: var(--colour-yellow);
+}
+
+.u-text-bold {
+  font-weight: 700;
+}
+.u-text-reg {
+  font-weight: 400;
+}
+.u-text-italic {
+  font-style: italic;
+}
+.u-text-upper {
+  text-transform: uppercase;
+}
+.u-text-lower {
+  text-transform: lowercase;
+}
+.u-text-underline {
+  text-decoration: underline;
+}
+.u-text-reset {
+  text-decoration: none;
+  text-transform: none;
+}
+.u-text-left {
+  text-align: left;
+}
+.u-text-right {
+  text-align: right;
+}
+.u-text-center {
+  text-align: center;
+}
+.u-text-baseline {
+  display: block;
+  line-height: 1;
+}
+
+.u-lh-1 {
+  line-height: 1;
+}
+
+.u-lh-1-25 {
+  line-height: 1.25;
+}
+
+.u-lh-1-33 {
+  line-height: 1.33;
+}
+
+.u-lh-1-5 {
+  line-height: 1.5;
+}
+
+.u-lh-1-75 {
+  line-height: 1.75;
+}
+
+.u-ov-auto {
+  overflow: auto;
+}
+.u-ov-hid {
+  overflow: hidden;
+}
+.u-ov-vis {
+  overflow: visible;
+}
+
+[data-line-clamp] {
+  display: box;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+}
+
+[data-line-clamp="1"] {
+  -webkit-line-clamp: 1;
+}
+
+[data-line-clamp="2"] {
+  -webkit-line-clamp: 2;
+}
+
+[data-line-clamp="3"] {
+  -webkit-line-clamp: 3;
+}
+
+[data-line-clamp="4"] {
+  -webkit-line-clamp: 4;
+}
+
+[data-line-clamp="5"] {
+  -webkit-line-clamp: 5;
+}
+
+.u-line {
+  display: block;
+  width: 100px;
+  height: 2px;
+  background-color: var(--colour-navy);
+  transform: scaleY(0.5);
+}
+
+.u-skeleton-box {
+  position: relative;
+  display: inline-block;
+  height: 1em;
+  overflow: hidden;
+  background-color: #dce3e3;
+}
+.u-skeleton-box::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.2) 20%, rgba(255, 255, 255, 0.5) 60%, rgba(255, 255, 255, 0));
+  transform: translateX(-100%);
+  -webkit-animation: shimmer 1s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
+          animation: shimmer 1s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
+  content: "";
+}
+@-webkit-keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+.is-loaded .u-skeleton-box {
+  display: none;
+}
+
+.is-sticky {
+  position: sticky;
+  top: 0;
+}
+
+[data-anim] {
+  position: relative;
+}
+.js [data-anim] {
+  opacity: 0;
+}
+.js [data-anim][data-anim=""] {
+  opacity: 1;
+}
+.no-js [data-anim] {
+  opacity: 1;
+}
+@media (prefers-reduced-motion) {
+  [data-anim] {
+    transition: none;
+    -webkit-animation: unset;
+            animation: unset;
+  }
+}
+[data-anim][data-anim=reveal] {
+  transform: scaleY(0);
+}
+[data-anim][data-anim$=abs] {
+  position: absolute;
+}
+[data-anim][data-anim$=sticky] {
+  position: sticky;
+}
+[data-anim][data-anim*=block] {
+  overflow: hidden;
+  opacity: 1;
+}
+[data-anim][data-anim*=block]::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -1px;
+  bottom: 0;
+  left: -1px;
+  background-color: currentcolor;
+  transform: translate3d(-100%, 0, 0);
+  will-change: transform;
+}
+[data-anim][data-anim*=block] [src] {
+  opacity: 0;
+}
+
+.is-inview[data-anim*=fade-in], .is-inview [data-anim*=fade-in] {
+  transition: opacity 300ms cubic-bezier(0.79, 0.14, 0.15, 0.86);
+  opacity: 1;
+}
+.is-inview[data-anim*=fade-in-stagger], .is-inview [data-anim*=fade-in-stagger] {
+  transition: opacity 750ms cubic-bezier(0.79, 0.14, 0.15, 0.86);
+  opacity: 1;
+}
+.is-inview[data-anim*=fade-in-stagger]:nth-child(20) > *, .is-inview [data-anim*=fade-in-stagger]:nth-child(20) > * {
+  transition-delay: 2.25s;
+}
+.is-inview[data-anim*=fade-in-stagger]:nth-child(19) > *, .is-inview [data-anim*=fade-in-stagger]:nth-child(19) > * {
+  transition-delay: 2.15s;
+}
+.is-inview[data-anim*=fade-in-stagger]:nth-child(18) > *, .is-inview [data-anim*=fade-in-stagger]:nth-child(18) > * {
+  transition-delay: 2.05s;
+}
+.is-inview[data-anim*=fade-in-stagger]:nth-child(17) > *, .is-inview [data-anim*=fade-in-stagger]:nth-child(17) > * {
+  transition-delay: 1.95s;
+}
+.is-inview[data-anim*=fade-in-stagger]:nth-child(16) > *, .is-inview [data-anim*=fade-in-stagger]:nth-child(16) > * {
+  transition-delay: 1.85s;
+}
+.is-inview[data-anim*=fade-in-stagger]:nth-child(15) > *, .is-inview [data-anim*=fade-in-stagger]:nth-child(15) > * {
+  transition-delay: 1.75s;
+}
+.is-inview[data-anim*=fade-in-stagger]:nth-child(14) > *, .is-inview [data-anim*=fade-in-stagger]:nth-child(14) > * {
+  transition-delay: 1.65s;
+}
+.is-inview[data-anim*=fade-in-stagger]:nth-child(13) > *, .is-inview [data-anim*=fade-in-stagger]:nth-child(13) > * {
+  transition-delay: 1.55s;
+}
+.is-inview[data-anim*=fade-in-stagger]:nth-child(12) > *, .is-inview [data-anim*=fade-in-stagger]:nth-child(12) > * {
+  transition-delay: 1.45s;
+}
+.is-inview[data-anim*=fade-in-stagger]:nth-child(11) > *, .is-inview [data-anim*=fade-in-stagger]:nth-child(11) > * {
+  transition-delay: 1.35s;
+}
+.is-inview[data-anim*=fade-in-stagger]:nth-child(10) > *, .is-inview [data-anim*=fade-in-stagger]:nth-child(10) > * {
+  transition-delay: 1.25s;
+}
+.is-inview[data-anim*=fade-in-stagger]:nth-child(9) > *, .is-inview [data-anim*=fade-in-stagger]:nth-child(9) > * {
+  transition-delay: 1.15s;
+}
+.is-inview[data-anim*=fade-in-stagger]:nth-child(8) > *, .is-inview [data-anim*=fade-in-stagger]:nth-child(8) > * {
+  transition-delay: 1.05s;
+}
+.is-inview[data-anim*=fade-in-stagger]:nth-child(7) > *, .is-inview [data-anim*=fade-in-stagger]:nth-child(7) > * {
+  transition-delay: 0.95s;
+}
+.is-inview[data-anim*=fade-in-stagger]:nth-child(6) > *, .is-inview [data-anim*=fade-in-stagger]:nth-child(6) > * {
+  transition-delay: 0.85s;
+}
+.is-inview[data-anim*=fade-in-stagger]:nth-child(5) > *, .is-inview [data-anim*=fade-in-stagger]:nth-child(5) > * {
+  transition-delay: 0.75s;
+}
+.is-inview[data-anim*=fade-in-stagger]:nth-child(4) > *, .is-inview [data-anim*=fade-in-stagger]:nth-child(4) > * {
+  transition-delay: 0.65s;
+}
+.is-inview[data-anim*=fade-in-stagger]:nth-child(3) > *, .is-inview [data-anim*=fade-in-stagger]:nth-child(3) > * {
+  transition-delay: 0.55s;
+}
+.is-inview[data-anim*=fade-in-stagger]:nth-child(2) > *, .is-inview [data-anim*=fade-in-stagger]:nth-child(2) > * {
+  transition-delay: 0.45s;
+}
+.is-inview[data-anim*=fade-in-stagger]:nth-child(1) > *, .is-inview [data-anim*=fade-in-stagger]:nth-child(1) > * {
+  transition-delay: 0.35s;
+}
+.is-inview[data-anim*=fade-in-up], .is-inview [data-anim*=fade-in-up] {
+  -webkit-animation: fade-in-up 1s ease-in-out 0s both 1;
+          animation: fade-in-up 1s ease-in-out 0s both 1;
+}
+@-webkit-keyframes fade-in-up {
+  0% {
+    transform: translate3d(0, 100px, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+@keyframes fade-in-up {
+  0% {
+    transform: translate3d(0, 100px, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+.is-inview[data-anim=fade-in-up-stagger] > *:not(.o-anim), .is-inview [data-anim=fade-in-up-stagger] > *:not(.o-anim) {
+  -webkit-animation: fade-in-up 1s ease-in-out 0s both 1;
+          animation: fade-in-up 1s ease-in-out 0s both 1;
+}
+.is-inview[data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(20), .is-inview [data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(20) {
+  -webkit-animation-delay: 2.25s;
+          animation-delay: 2.25s;
+}
+.is-inview[data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(19), .is-inview [data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(19) {
+  -webkit-animation-delay: 2.15s;
+          animation-delay: 2.15s;
+}
+.is-inview[data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(18), .is-inview [data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(18) {
+  -webkit-animation-delay: 2.05s;
+          animation-delay: 2.05s;
+}
+.is-inview[data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(17), .is-inview [data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(17) {
+  -webkit-animation-delay: 1.95s;
+          animation-delay: 1.95s;
+}
+.is-inview[data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(16), .is-inview [data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(16) {
+  -webkit-animation-delay: 1.85s;
+          animation-delay: 1.85s;
+}
+.is-inview[data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(15), .is-inview [data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(15) {
+  -webkit-animation-delay: 1.75s;
+          animation-delay: 1.75s;
+}
+.is-inview[data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(14), .is-inview [data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(14) {
+  -webkit-animation-delay: 1.65s;
+          animation-delay: 1.65s;
+}
+.is-inview[data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(13), .is-inview [data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(13) {
+  -webkit-animation-delay: 1.55s;
+          animation-delay: 1.55s;
+}
+.is-inview[data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(12), .is-inview [data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(12) {
+  -webkit-animation-delay: 1.45s;
+          animation-delay: 1.45s;
+}
+.is-inview[data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(11), .is-inview [data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(11) {
+  -webkit-animation-delay: 1.35s;
+          animation-delay: 1.35s;
+}
+.is-inview[data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(10), .is-inview [data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(10) {
+  -webkit-animation-delay: 1.25s;
+          animation-delay: 1.25s;
+}
+.is-inview[data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(9), .is-inview [data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(9) {
+  -webkit-animation-delay: 1.15s;
+          animation-delay: 1.15s;
+}
+.is-inview[data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(8), .is-inview [data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(8) {
+  -webkit-animation-delay: 1.05s;
+          animation-delay: 1.05s;
+}
+.is-inview[data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(7), .is-inview [data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(7) {
+  -webkit-animation-delay: 0.95s;
+          animation-delay: 0.95s;
+}
+.is-inview[data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(6), .is-inview [data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(6) {
+  -webkit-animation-delay: 0.85s;
+          animation-delay: 0.85s;
+}
+.is-inview[data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(5), .is-inview [data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(5) {
+  -webkit-animation-delay: 0.75s;
+          animation-delay: 0.75s;
+}
+.is-inview[data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(4), .is-inview [data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(4) {
+  -webkit-animation-delay: 0.65s;
+          animation-delay: 0.65s;
+}
+.is-inview[data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(3), .is-inview [data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(3) {
+  -webkit-animation-delay: 0.55s;
+          animation-delay: 0.55s;
+}
+.is-inview[data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(2), .is-inview [data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(2) {
+  -webkit-animation-delay: 0.45s;
+          animation-delay: 0.45s;
+}
+.is-inview[data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(1), .is-inview [data-anim=fade-in-up-stagger] > *:not(.o-anim):nth-child(1) {
+  -webkit-animation-delay: 0.35s;
+          animation-delay: 0.35s;
+}
+.is-inview[data-anim=fade-in-left], .is-inview [data-anim=fade-in-left] {
+  -webkit-animation: fade-in-left 1.2s cubic-bezier(0.79, 0.14, 0.15, 0.86) 0s forwards 1;
+          animation: fade-in-left 1.2s cubic-bezier(0.79, 0.14, 0.15, 0.86) 0s forwards 1;
+}
+@-webkit-keyframes fade-in-left {
+  0% {
+    transform: translate3d(-20%, 0, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+@keyframes fade-in-left {
+  0% {
+    transform: translate3d(-20%, 0, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+.is-inview[data-anim=fade-in-right], .is-inview [data-anim=fade-in-right] {
+  -webkit-animation: fade-in-right 1.2s cubic-bezier(0.79, 0.14, 0.15, 0.86) 0s forwards 1;
+          animation: fade-in-right 1.2s cubic-bezier(0.79, 0.14, 0.15, 0.86) 0s forwards 1;
+}
+@-webkit-keyframes fade-in-right {
+  0% {
+    transform: translate3d(20%, 0, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+@keyframes fade-in-right {
+  0% {
+    transform: translate3d(20%, 0, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+.is-inview[data-anim*=scale-in] {
+  -webkit-animation: scale 1s ease-in-out 0s both 1;
+          animation: scale 1s ease-in-out 0s both 1;
+  transform-origin: center;
+}
+@-webkit-keyframes scale {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes scale {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.is-inview[data-anim=scale-in-stagger], .is-inview [data-anim=scale-in-stagger] {
+  opacity: 1;
+}
+.is-inview[data-anim=scale-in-stagger] > *:not(.o-anim), .is-inview [data-anim=scale-in-stagger] > *:not(.o-anim) {
+  -webkit-animation: scale 1s ease-in-out 0s both 1;
+          animation: scale 1s ease-in-out 0s both 1;
+  transform-origin: center;
+}
+.is-inview[data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(20), .is-inview [data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(20) {
+  -webkit-animation-delay: 2.25s;
+          animation-delay: 2.25s;
+}
+.is-inview[data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(19), .is-inview [data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(19) {
+  -webkit-animation-delay: 2.15s;
+          animation-delay: 2.15s;
+}
+.is-inview[data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(18), .is-inview [data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(18) {
+  -webkit-animation-delay: 2.05s;
+          animation-delay: 2.05s;
+}
+.is-inview[data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(17), .is-inview [data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(17) {
+  -webkit-animation-delay: 1.95s;
+          animation-delay: 1.95s;
+}
+.is-inview[data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(16), .is-inview [data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(16) {
+  -webkit-animation-delay: 1.85s;
+          animation-delay: 1.85s;
+}
+.is-inview[data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(15), .is-inview [data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(15) {
+  -webkit-animation-delay: 1.75s;
+          animation-delay: 1.75s;
+}
+.is-inview[data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(14), .is-inview [data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(14) {
+  -webkit-animation-delay: 1.65s;
+          animation-delay: 1.65s;
+}
+.is-inview[data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(13), .is-inview [data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(13) {
+  -webkit-animation-delay: 1.55s;
+          animation-delay: 1.55s;
+}
+.is-inview[data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(12), .is-inview [data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(12) {
+  -webkit-animation-delay: 1.45s;
+          animation-delay: 1.45s;
+}
+.is-inview[data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(11), .is-inview [data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(11) {
+  -webkit-animation-delay: 1.35s;
+          animation-delay: 1.35s;
+}
+.is-inview[data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(10), .is-inview [data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(10) {
+  -webkit-animation-delay: 1.25s;
+          animation-delay: 1.25s;
+}
+.is-inview[data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(9), .is-inview [data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(9) {
+  -webkit-animation-delay: 1.15s;
+          animation-delay: 1.15s;
+}
+.is-inview[data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(8), .is-inview [data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(8) {
+  -webkit-animation-delay: 1.05s;
+          animation-delay: 1.05s;
+}
+.is-inview[data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(7), .is-inview [data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(7) {
+  -webkit-animation-delay: 0.95s;
+          animation-delay: 0.95s;
+}
+.is-inview[data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(6), .is-inview [data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(6) {
+  -webkit-animation-delay: 0.85s;
+          animation-delay: 0.85s;
+}
+.is-inview[data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(5), .is-inview [data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(5) {
+  -webkit-animation-delay: 0.75s;
+          animation-delay: 0.75s;
+}
+.is-inview[data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(4), .is-inview [data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(4) {
+  -webkit-animation-delay: 0.65s;
+          animation-delay: 0.65s;
+}
+.is-inview[data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(3), .is-inview [data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(3) {
+  -webkit-animation-delay: 0.55s;
+          animation-delay: 0.55s;
+}
+.is-inview[data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(2), .is-inview [data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(2) {
+  -webkit-animation-delay: 0.45s;
+          animation-delay: 0.45s;
+}
+.is-inview[data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(1), .is-inview [data-anim=scale-in-stagger] > *:not(.o-anim):nth-child(1) {
+  -webkit-animation-delay: 0.35s;
+          animation-delay: 0.35s;
+}
+.is-inview[data-anim=reveal] {
+  -webkit-animation: reveal 1s ease-in-out 0s both 1;
+          animation: reveal 1s ease-in-out 0s both 1;
+  transform-origin: bottom;
+}
+@-webkit-keyframes reveal {
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+@keyframes reveal {
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+.is-inview[data-anim=reveal-left] {
+  -webkit-animation: reveal-left 1s ease-in-out 0s both 1;
+          animation: reveal-left 1s ease-in-out 0s both 1;
+  transform-origin: right center;
+}
+@-webkit-keyframes reveal-left {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+@keyframes reveal-left {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+.is-inview[data-anim=reveal-right] {
+  -webkit-animation: reveal-right 1s ease-in-out 0s both 1;
+          animation: reveal-right 1s ease-in-out 0s both 1;
+  transform-origin: left center;
+}
+@-webkit-keyframes reveal-right {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+@keyframes reveal-right {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+.is-inview[data-anim=block]::after {
+  -webkit-animation: slide-in 1.2s cubic-bezier(0.5, 0, 0.5, 1) 0s forwards 1;
+          animation: slide-in 1.2s cubic-bezier(0.5, 0, 0.5, 1) 0s forwards 1;
+}
+@-webkit-keyframes slide-in {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(0%, 0, 0);
+    -webkit-animation-delay: 1s;
+            animation-delay: 1s;
+  }
+  100% {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+@keyframes slide-in {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(0%, 0, 0);
+    -webkit-animation-delay: 1s;
+            animation-delay: 1s;
+  }
+  100% {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+.is-inview[data-anim=block] [src] {
+  -webkit-animation: fade-in 0.1s ease 0.6s forwards 1;
+          animation: fade-in 0.1s ease 0.6s forwards 1;
+}
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.is-inview[data-anim-delay-count="1"] {
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+}
+.is-inview[data-anim-delay-count="2"] {
+  -webkit-animation-delay: 0.8s;
+          animation-delay: 0.8s;
+}
+.is-inview[data-anim-delay-count="3"] {
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+.is-inview[data-anim-delay-count="4"] {
+  -webkit-animation-delay: 1.2s;
+          animation-delay: 1.2s;
+}
+.is-inview[data-anim-delay-count="5"] {
+  -webkit-animation-delay: 1.4s;
+          animation-delay: 1.4s;
+}
+.is-inview[data-anim-delay-count="6"] {
+  -webkit-animation-delay: 1.6s;
+          animation-delay: 1.6s;
+}
+.is-inview[data-anim-delay-count="7"] {
+  -webkit-animation-delay: 1.8s;
+          animation-delay: 1.8s;
+}
+.is-inview[data-anim-delay-count="8"] {
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+.is-inview[data-anim-delay-count="9"] {
+  -webkit-animation-delay: 2.2s;
+          animation-delay: 2.2s;
+}
+.is-inview[data-anim-delay-count="10"] {
+  -webkit-animation-delay: 2.4s;
+          animation-delay: 2.4s;
+}
+
+.o-anim {
+  position: relative;
+  overflow: hidden;
+}
+.o-anim__words {
+  display: inline-block;
+  overflow: hidden;
+  line-height: 1;
+  white-space: nowrap;
+}
+.o-anim__letter {
+  display: inline-block;
+  transform-origin: 0 100%;
+  opacity: 0;
+}
+
+/* =============================================================================
+   Primary styles
+   ========================================================================== */
+/*
+  Contents
+  --------
+	0 	$ELEMENTS
+	2 	$OBJECTS
+	3 	$COMPONENTS
+	4	$LAYOUT
+	5 	$UTILITIES
+	6 	$STYLEGUIDE
+*/
+/* ============================
+// $ELEMENTS
+// Single HTML element selectors without classes
+*/
+/* ============================
+// $OBJECTS
+// Classes for page structure typically following the OOCSS methodology
+// The first layer in which we find class-level specificity
+*/
+/* ============================
+// $TYPOGRAPHY
+// Classes for the display and control of your typography.
+// These elements sit loosely between objects and components and in turn can be overridden on a piece of UI
+*/
+/* ============================
+//	$COMPONENTS
+//  Classes for styling any & all UI elements (often combined with the structure of object classes)
+//  Keep to DRY principles  ( [D]ont [R]epeat [Y]ourself )
+*/
+/* ============================
+// $UTILITIES
+// utilities classes in accordance with DRY mentality.
+// Eliminates the need to create specific classes to perform simple tasks
+// NOTE: Use sparingly
+*/

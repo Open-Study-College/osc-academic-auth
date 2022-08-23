@@ -1,0 +1,89 @@
+@use "sass:list";
+@use "sass:map";
+@use "../settings/animation";
+
+///*----------------------------------*\
+//  #ANIMATION
+//\*----------------------------------*/
+//
+//  Mixin's to aid animations
+//
+///*----------------------------------*\
+//
+//  #Transition Delay
+//
+// Usage:
+// @include stagger-delay(10, 0.5s, 0.1s);
+
+@mixin stagger-delay(
+    $i,
+    $initial-delay,
+    $stagger-delay,
+    $type: "animation",
+    $animate-child: false
+) {
+    @while $i > 0 {
+        &:nth-child(#{$i}) {
+            @if $animate-child == true {
+                > * {
+                    @if $type == "animation" {
+                        animation-delay: $initial-delay + $stagger-delay * $i;
+                    } @else {
+                        transition-delay: $initial-delay + $stagger-delay * $i;
+                    }
+                }
+            } @else {
+                @if $type == "animation" {
+                    animation-delay: $initial-delay + $stagger-delay * $i;
+                } @else {
+                    transition-delay: $initial-delay + $stagger-delay * $i;
+                }
+            }
+        }
+
+        $i: $i - 1;
+    }
+}
+
+///*----------------------------------*\
+//
+//  #Keyframe Animations
+//  @param {*} $name ["fade-in"]
+//  @param {*} $duration [2s]
+//  @param {*} $timing [ease-in]
+//  @param {*} $delay [1s]
+//  @param {*} $fill [both]
+//  @param {*} $iteration [1]
+//
+//  Usage:
+//  @include animate("fade-in");
+//  @include animate("fade-in", 1s, ease-in, 1s, both, 1);
+//  @include animate("breathe", 5s, ease-out, 0s, none, infinite);
+
+@mixin keyframe-gen($name) {
+    @keyframes #{$name} {
+        @each $position, $change in map.get(animation.$animations, $name) {
+            #{$position} {
+                @each $prop, $val in $change {
+                    #{$prop}: #{$val};
+                }
+            }
+        }
+    }
+}
+
+$included-animations: ();
+
+@mixin animate($name, $duration: 1s, $timing: ease-in-out, $delay: 0s, $fill: both, $iteration: 1) {
+    $exists: list.index($included-animations, "#{$name}");
+
+    @if not $exists {
+        @at-root {
+            @include keyframe-gen(#{$name});
+        }
+
+        $included-animations: list.append($included-animations, "#{$name}") !global;
+    }
+
+    animation: $name $duration $timing $delay $fill $iteration;
+}

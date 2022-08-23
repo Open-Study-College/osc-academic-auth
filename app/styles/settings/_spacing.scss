@@ -1,0 +1,39 @@
+@use "sass:math";
+@use "global";
+
+///*----------------------------------*\
+//  #SPACING SETTINGS
+//\*----------------------------------*/
+//
+// The spacing system is created by defining a scale of non-linear (spacing) values using our
+// base values ($global-scale-ratio / $global-baseline) and a multiplier ($global-spacing-factor).
+// Should you need to change how the spacing works you can update the values in settings/global.
+//
+//  Ref: https://medium.com/codyhouse/create-your-design-system-part-4-spacing-895c9213e2b9
+//
+//\*----------------------------------*/
+
+// How many grid lines should our spacing unit variants span?
+// Each value should be an unitless integer.
+// Based on a fibonacci sequence
+
+$global-spacing-factor-s: 1; // 10px / 1rem
+$global-spacing-factor: 2; // 30px / 3rem
+$global-spacing-factor-m: 4; // 50px / 5rem
+$global-spacing-factor-l: 8; // 110px / 11rem
+$global-spacing-factor-xl: 16; // 210px / 21rem
+
+// Spacing values are determined based on your project’s global baseline grid.
+// It is not recommended that you modify these following variables
+// (it can break your vertical rhythm), but if you need to, you can.
+
+$global-spacing-s: math.round(global.$global-scale-ratio * $global-spacing-factor-s) *
+    global.$global-baseline; // 10
+$global-spacing: math.round(global.$global-scale-ratio * $global-spacing-factor) *
+    global.$global-baseline; // 30
+$global-spacing-m: math.round(global.$global-scale-ratio * $global-spacing-factor-m) *
+    global.$global-baseline; // 50
+$global-spacing-l: math.round(global.$global-scale-ratio * $global-spacing-factor-l) *
+    global.$global-baseline; // 110
+$global-spacing-xl: math.round(global.$global-scale-ratio * $global-spacing-factor-xl) *
+    global.$global-baseline; // 210

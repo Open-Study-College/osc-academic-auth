@@ -1,0 +1,18 @@
+@use "global";
+
+///*----------------------------------*\
+//  #CONTAINER WIDTH SETTINGS
+//\*----------------------------------*/
+//
+//  Defines global container widths
+//
+//\*----------------------------------*/
+
+$container-size: global.$global-base-width; // 1440
+
+$container-size-xxxsml: 610;
+$container-size-xxsml: 960;
+$container-size-xsml: 1020;
+$container-size-sml: 1140;
+$container-size-med: 1280;
+$container-size-lrg: 1680;

@@ -1,0 +1,27 @@
+@use "sass:math";
+
+///*----------------------------------*\
+//  #GLOBAL SETTINGS
+//\*----------------------------------*/
+//
+// Define global variables that dictate typography and spacing sizes
+//
+//\*----------------------------------*/
+
+// Our GLOBAL ratio which adheres to the modular scale and powers our Typography and Spacing
+$global-scale-ratio: 1.33; // Perfect Fourth Ratio
+
+// Every spacing metric should be based on this. We reset the document to allow 10px to dictate our px to rem calculations.
+$global-baseline: 1rem;
+
+// Lets define the Global container width
+$global-base-width: 1440;
+
+// The main asset path
+$asset-path: "/osc/themes/osc/assets";
+$prop-config: () !default;
+
+// The _fs function allows us to calculate our font sizes defined in settings/typography using modular scale for brevity
+@function fs($var) {
+    @return math.round($var * $global-scale-ratio);
+}
