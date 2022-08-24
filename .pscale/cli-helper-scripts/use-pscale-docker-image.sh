@@ -22,7 +22,7 @@ function pscale {
         command="`which pscale` $@"
     else
         # For debugging, set PSCALE_VERSION to a version of your choice. It defaults to "latest".
-        command="docker run -e PLANETSCALE_SERVICE_TOKEN=${PLANETSCALE_SERVICE_TOKEN:-""} -e PLANETSCALE_SERVICE_TOKEN_ID=$PLANETSCALE_SERVICE_TOKEN_ID -e PLANETSCALE_SERVICE_TOKEN_NAME=$PLANETSCALE_SERVICE_TOKEN_NAME -e HOME=/tmp -v $HOME/.config/planetscale:/tmp/.config/planetscale -v /tmp:/tmp -e PSCALE_ALLOW_NONINTERACTIVE_SHELL=true --rm -i $tty planetscale/pscale:${PSCALE_VERSION:-"latest"} $@"
+        command="docker run -e PLANETSCALE_SERVICE_TOKEN=${PLANETSCALE_SERVICE_TOKEN:-""} -e PLANETSCALE_SERVICE_TOKEN_ID=$PLANETSCALE_SERVICE_TOKEN_ID -e PLANETSCALE_SERVICE_TOKEN_NAME=$PLANETSCALE_SERVICE_TOKEN_NAME -e HOME=/tmp -v $HOME/.config/planetscale:/tmp/.config/planetscale -v /tmpMigration:/tmpMigration -e PSCALE_ALLOW_NONINTERACTIVE_SHELL=true --rm -i $tty planetscale/pscale:${PSCALE_VERSION:-"latest"} $@"
     fi
 
     # if command is auth and we are running in CI, we will use the script command to get a fake terminal
