@@ -80,8 +80,8 @@ Prior to your first deployment, you'll need to do a few things:
 -   Create three apps on Fly, one for staging and one for release and one for production:
 
     ```sh
-    fly create osc-stack
-    fly create osc-stack
+    fly create osc-academic-auth
+    fly create osc-academic-auth
     ```
 
     -   Initialize Git.
@@ -101,9 +101,9 @@ Prior to your first deployment, you'll need to do a few things:
 -   Add a `SESSION_SECRET` to your fly app secrets, to do this you can run the following commands:
 
     ```sh
-    fly secrets set SESSION_SECRET=$(openssl rand -hex 32) --app osc-stack
-    fly secrets set SESSION_SECRET=$(openssl rand -hex 32) --app osc-stack-staging
-    fly secrets set SESSION_SECRET=$(openssl rand -hex 32) --app osc-stack-release
+    fly secrets set SESSION_SECRET=$(openssl rand -hex 32) --app osc-academic-auth
+    fly secrets set SESSION_SECRET=$(openssl rand -hex 32) --app osc-academic-auth-staging
+    fly secrets set SESSION_SECRET=$(openssl rand -hex 32) --app osc-academic-auth-release
     ```
 
     If you don't have openssl installed, you can also use [1password](https://1password.com/password-generator/) to generate a random secret, just replace `$(openssl rand -hex 32)` with the generated secret.
@@ -111,9 +111,9 @@ Prior to your first deployment, you'll need to do a few things:
 -   Create a persistent volume for the sqlite database for both your staging and production and release environments. Run the following:
 
     ```sh
-    fly volumes create data --size 1 --app osc-stack
-    fly volumes create data --size 1 --app osc-stack-staging
-    fly volumes create data --size 1 --app osc-stack-release
+    fly volumes create data --size 1 --app osc-academic-auth
+    fly volumes create data --size 1 --app osc-academic-auth-staging
+    fly volumes create data --size 1 --app osc-academic-auth-release
     ```
 
 Now that everything is set up you can commit and push your changes to your repo. Every commit to your `main` branch will trigger a deployment to your production environment, and every commit to your `dev` branch will trigger a deployment to your staging environment and every commit to your `release` branch will trigger a deployment to your release enviroment
