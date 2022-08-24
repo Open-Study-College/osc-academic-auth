@@ -11,7 +11,7 @@
     "dev:remix": "cross-env NODE_ENV=development remix dev",
     "dev": "npm-run-all -p dev:*",
     "format": "prettier --write .",
-    "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint --max-warnings 0 --no-error-on-unmatched-pattern .",
+    "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint --ext .ts,.tsx, .js, .jsx --max-warnings 0 --no-error-on-unmatched-pattern .",
     "lint-and-fix": "eslint --cache --cache-location ./node_modules/.cache/eslint --max-warnings 0 --ext .ts,.tsx, .js, .jsx --fix --no-error-on-unmatched-pattern .",
     "prettier-format": "prettier --config .prettierrc.json '*.{js,jsx,ts,tsx,json,scss}' '**/*.{js,jsx,ts,tsx,json,scss}' --write",
     "stylelint": "npx stylelint \"**/*.scss\" --allow-empty-input",
