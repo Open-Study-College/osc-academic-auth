@@ -18,3 +18,4 @@ node_modules
 package-lock.json
 yarn.lock
 *.css
+public/entry.worker.js
